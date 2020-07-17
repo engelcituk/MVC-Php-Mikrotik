@@ -35,13 +35,6 @@
   <script src="<?php echo URLROOT; ?>/js/bootstrap-notify.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="<?php echo URLROOT; ?>/js/material-dashboard.minf066.js" type="text/javascript"></script>
+
     
-  <script>
-    $(document).ready(function() {
-      md.checkFullPageBackgroundImage();
-      setTimeout(function() {
-        // after 1000 ms we add the class animated to the login/register card
-        $('.card').removeClass('card-hidden');
-      }, 700);
-    });
-  </script>
+  

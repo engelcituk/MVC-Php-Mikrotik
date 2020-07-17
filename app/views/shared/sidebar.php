@@ -1,9 +1,9 @@
 <div class="sidebar" data-color="rose" data-background-color="black" data-image="<?php echo URLROOT; ?>/img/sidebar-1.jpg">
       <div class="logo">
-        <a href="http://www.creative-tim.com/" class="simple-text logo-mini">
+        <a href="#" class="simple-text logo-mini">
           CT
         </a>
-        <a href="http://www.creative-tim.com/" class="simple-text logo-normal">
+        <a href="#" class="simple-text logo-normal">
           Creative Tim
         </a>
       </div>

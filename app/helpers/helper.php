@@ -18,7 +18,7 @@ function activeMenuArray($urlArray){ //recibo un array
     $path = array (parse_url($directoryURI, PHP_URL_PATH));
     $existe = false;
     
-    foreach ($urlArray as $value) {
+    foreach ($urlArray as $value) {// recorro el array de urls
         if (in_array($value, $path)) { //path el valor permitido
             $existe = true;
             break;
@@ -32,11 +32,15 @@ function setCollapseShowArray($urlArray){ //recibo un array
     $path = array (parse_url($directoryURI, PHP_URL_PATH));
     $existe = false;
     
-    foreach ($urlArray as $value) {
+    foreach ($urlArray as $value) { // recorro el array de urls
         if (in_array($value, $path)) { //path el valor permitido
             $existe = true;
             break;
         } 
     }
     return $show = $existe  ? 'show' : '';
+}
+
+function csrf_token(){
+    return md5(uniqid(mt_rand(), true));
 }

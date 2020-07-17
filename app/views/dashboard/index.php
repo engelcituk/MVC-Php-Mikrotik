@@ -19,6 +19,7 @@
                                 <i class="material-icons"></i>
                                 </div>
                                 <h4 class="card-title">Global Sales by Top Locations <?php echo activeMenu([ROOTFOLDER.'dashboard']); ?></h4>
+                                <button class="btn btn-primary" onclick="miclick()">click</button>
                                 
                             </div>
                             <div class="card-body ">
@@ -37,5 +38,7 @@
             </div>
         </div>
         <?php require APPROOT . '/views/shared/scriptjs.php'; ?> 
+        <script src="<?php echo URLROOT; ?>/js/main.js"></script>
+
     </body>
 </html>
