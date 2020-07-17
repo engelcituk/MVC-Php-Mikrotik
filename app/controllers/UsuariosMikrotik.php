@@ -11,7 +11,6 @@ class UsuariosMikrotik extends Controller {
         $this->userModel = $this->model('User'); */
     }
     public function index(){
-        //obtengo los posts
 
         $data =[
             'posts'=>'hola'
@@ -21,7 +20,6 @@ class UsuariosMikrotik extends Controller {
     }
 
     public function editarPassword(){
-        //obtengo los posts
 
         $data =[
             'posts'=>'hola'
@@ -31,7 +29,6 @@ class UsuariosMikrotik extends Controller {
     }
 
     public function editarIdentidad(){
-        //obtengo los posts
 
         $data =[
             'posts'=>'hola'
@@ -41,7 +38,6 @@ class UsuariosMikrotik extends Controller {
     }
 
     public function reiniciarMikrotik(){
-        //obtengo los posts
 
         $data =[
             'posts'=>'hola'
@@ -49,8 +45,7 @@ class UsuariosMikrotik extends Controller {
         
         $this->view('usuariosMikrotik/reiniciarMikrotik', $data);
     }
-    public function editPerfilMikrotik(){
-        //obtengo los posts
+    public function editarPerfilMikrotik(){
 
         $data =[
             'posts'=>'hola'

@@ -30,14 +30,23 @@ class UsuariosHotspot extends Controller {
         $this->view('usuariosHotspot/activos', $data);
     }
 
-    public function generar(){
+    public function generador(){
         //obtengo los posts
 
         $data =[
             'posts'=>'hola'
         ];
         
-        $this->view('usuariosHotspot/generar', $data);
+        $this->view('usuariosHotspot/generador', $data);
+    }
+    public function agregar(){
+        //obtengo los posts
+
+        $data =[
+            'posts'=>'hola'
+        ];
+        
+        $this->view('usuariosHotspot/agregar', $data);
     }
 
 }

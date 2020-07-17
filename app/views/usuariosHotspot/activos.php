@@ -18,7 +18,7 @@
                                 <div class="card-icon">
                                 <i class="material-icons"></i>
                                 </div>
-                                <h4 class="card-title">usuariosActivos</h4>
+                                <h4 class="card-title">usuarios hostpot Activos</h4>
                             </div>
                             <div class="card-body ">
                                 <div class="material-datatables">

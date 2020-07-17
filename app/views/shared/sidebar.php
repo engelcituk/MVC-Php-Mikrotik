@@ -23,20 +23,8 @@
               <ul class="nav">
                 <li class="nav-item">
                   <a class="nav-link" href="#">
-                    <span class="sidebar-mini"> MP </span>
-                    <span class="sidebar-normal"> My Profile </span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <span class="sidebar-mini"> EP </span>
-                    <span class="sidebar-normal"> Edit Profile </span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <span class="sidebar-mini"> S </span>
-                    <span class="sidebar-normal"> Settings </span>
+                    <span class="sidebar-mini"> P </span>
+                    <span class="sidebar-normal"> Perfil </span>
                   </a>
                 </li>
               </ul>
@@ -44,258 +32,118 @@
           </div>
         </div>
         <ul class="nav">
-          <li class="nav-item active ">
-            <a class="nav-link" href="dashboard.html">
+          <li class="nav-item <?php echo activeMenu('dashboard'); ?> ">
+            <a class="nav-link" href="<?php echo URLROOT; ?>/dashboard">
               <i class="material-icons">dashboard</i>
               <p> Dashboard </p>
             </a>
           </li>
           <li class="nav-item ">
             <a class="nav-link" data-toggle="collapse" href="#pagesExamples">
-              <i class="material-icons">image</i>
-              <p> Pages
+              <i class="material-icons">group</i>
+              <p> Usuarios hotspot
                 <b class="caret"></b>
               </p>
             </a>
-            <div class="collapse" id="pagesExamples">
+            <div class="collapse <?php echo setCollapseShow('usuarioshotspot'); ?>" id="pagesExamples">
               <ul class="nav">
-                <li class="nav-item ">
-                  <a class="nav-link" href="pages/pricing.html">
-                    <span class="sidebar-mini"> P </span>
-                    <span class="sidebar-normal"> Pricing </span>
+                <li class="nav-item <?php echo activeMenu('usuarioshotspot'); ?>">
+                  <a class="nav-link" href="<?php echo URLROOT; ?>/usuarioshotspot">
+                    <span class="sidebar-mini"> UH </span>
+                    <span class="sidebar-normal">Usuarios hotspot </span>
                   </a>
                 </li>
-                <li class="nav-item ">
-                  <a class="nav-link" href="pages/rtl.html">
-                    <span class="sidebar-mini"> RS </span>
-                    <span class="sidebar-normal"> RTL Support </span>
+                <li class="nav-item <?php echo activeMenu('usuarioshotspot'); ?>">
+                  <a class="nav-link" href="<?php echo URLROOT; ?>/usuarioshotspot/activos">
+                    <span class="sidebar-mini"> UA </span>
+                    <span class="sidebar-normal"> Usuarios activos </span>
                   </a>
                 </li>
-                <li class="nav-item ">
-                  <a class="nav-link" href="pages/timeline.html">
-                    <span class="sidebar-mini"> T </span>
-                    <span class="sidebar-normal"> Timeline </span>
+                <li class="nav-item <?php echo activeMenu('usuarioshotspot'); ?>">
+                  <a class="nav-link" href="<?php echo URLROOT; ?>/usuarioshotspot/generador">
+                    <span class="sidebar-mini"> G </span>
+                    <span class="sidebar-normal"> Generador </span>
                   </a>
                 </li>
-                <li class="nav-item ">
-                  <a class="nav-link" href="pages/login.html">
-                    <span class="sidebar-mini"> LP </span>
-                    <span class="sidebar-normal"> Login Page </span>
+                <li class="nav-item <?php echo activeMenu('usuarioshotspot'); ?>">
+                  <a class="nav-link" href="<?php echo URLROOT; ?>/usuarioshotspot/agregar">
+                    <span class="sidebar-mini"> AU </span>
+                    <span class="sidebar-normal"> Agregar usuario </span>
                   </a>
                 </li>
-                <li class="nav-item ">
-                  <a class="nav-link" href="pages/register.html">
-                    <span class="sidebar-mini"> RP </span>
-                    <span class="sidebar-normal"> Register Page </span>
-                  </a>
-                </li>
-                <li class="nav-item ">
-                  <a class="nav-link" href="pages/lock.html">
-                    <span class="sidebar-mini"> LSP </span>
-                    <span class="sidebar-normal"> Lock Screen Page </span>
-                  </a>
-                </li>
-                <li class="nav-item ">
-                  <a class="nav-link" href="pages/user.html">
-                    <span class="sidebar-mini"> UP </span>
-                    <span class="sidebar-normal"> User Profile </span>
-                  </a>
-                </li>
-                <li class="nav-item ">
-                  <a class="nav-link" href="pages/error.html">
-                    <span class="sidebar-mini"> E </span>
-                    <span class="sidebar-normal"> Error Page </span>
-                  </a>
-                </li>
+                
               </ul>
             </div>
           </li>
           <li class="nav-item ">
             <a class="nav-link" data-toggle="collapse" href="#componentsExamples">
-              <i class="material-icons">apps</i>
-              <p> Components
+              <i class="material-icons">connect_without_contact</i>
+              <p> Grupo límite
                 <b class="caret"></b>
               </p>
             </a>
             <div class="collapse" id="componentsExamples">
               <ul class="nav">
                 <li class="nav-item ">
-                  <a class="nav-link" data-toggle="collapse" href="#componentsCollapse">
-                    <span class="sidebar-mini"> MLT </span>
-                    <span class="sidebar-normal"> Multi Level Collapse
-                      <b class="caret"></b>
-                    </span>
-                  </a>
-                  <div class="collapse" id="componentsCollapse">
-                    <ul class="nav">
-                      <li class="nav-item ">
-                        <a class="nav-link" href="#0">
-                          <span class="sidebar-mini"> E </span>
-                          <span class="sidebar-normal"> Example </span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-                <li class="nav-item ">
-                  <a class="nav-link" href="components/buttons.html">
-                    <span class="sidebar-mini"> B </span>
-                    <span class="sidebar-normal"> Buttons </span>
+                  <a class="nav-link" href="<?php echo URLROOT; ?>/grupolimiteanchobanda">
+                    <span class="sidebar-mini"> LGL </span>
+                    <span class="sidebar-normal"> Lista de grupo límite </span>
                   </a>
                 </li>
                 <li class="nav-item ">
-                  <a class="nav-link" href="components/grid.html">
-                    <span class="sidebar-mini"> GS </span>
-                    <span class="sidebar-normal"> Grid System </span>
+                  <a class="nav-link" href="<?php echo URLROOT; ?>/grupolimiteanchobanda/generador">
+                    <span class="sidebar-mini"> AGL </span>
+                    <span class="sidebar-normal"> Agregar grupo limite </span>
                   </a>
                 </li>
-                <li class="nav-item ">
-                  <a class="nav-link" href="components/panels.html">
-                    <span class="sidebar-mini"> P </span>
-                    <span class="sidebar-normal"> Panels </span>
-                  </a>
-                </li>
-                <li class="nav-item ">
-                  <a class="nav-link" href="components/sweet-alert.html">
-                    <span class="sidebar-mini"> SA </span>
-                    <span class="sidebar-normal"> Sweet Alert </span>
-                  </a>
-                </li>
-                <li class="nav-item ">
-                  <a class="nav-link" href="components/notifications.html">
-                    <span class="sidebar-mini"> N </span>
-                    <span class="sidebar-normal"> Notifications </span>
-                  </a>
-                </li>
-                <li class="nav-item ">
-                  <a class="nav-link" href="components/icons.html">
-                    <span class="sidebar-mini"> I </span>
-                    <span class="sidebar-normal"> Icons </span>
-                  </a>
-                </li>
-                <li class="nav-item ">
-                  <a class="nav-link" href="components/typography.html">
-                    <span class="sidebar-mini"> T </span>
-                    <span class="sidebar-normal"> Typography </span>
-                  </a>
-                </li>
+                
+                
               </ul>
             </div>
           </li>
           <li class="nav-item ">
             <a class="nav-link" data-toggle="collapse" href="#formsExamples">
-              <i class="material-icons">content_paste</i>
-              <p> Forms
+              <i class="material-icons">menu</i>
+              <p> Extras mikrotik
                 <b class="caret"></b>
               </p>
             </a>
             <div class="collapse" id="formsExamples">
               <ul class="nav">
                 <li class="nav-item ">
-                  <a class="nav-link" href="forms/regular.html">
-                    <span class="sidebar-mini"> RF </span>
-                    <span class="sidebar-normal"> Regular Forms </span>
+                  <a class="nav-link" href="<?php echo URLROOT; ?>/usuariosmikrotik/editarperfilmikrotik ">
+                    <span class="sidebar-mini"> P </span>
+                    <span class="sidebar-normal"> Perfil </span>
                   </a>
                 </li>
                 <li class="nav-item ">
-                  <a class="nav-link" href="forms/extended.html">
-                    <span class="sidebar-mini"> EF </span>
-                    <span class="sidebar-normal"> Extended Forms </span>
+                  <a class="nav-link" href="<?php echo URLROOT; ?>/usuariosmikrotik">
+                    <span class="sidebar-mini"> UM </span>
+                    <span class="sidebar-normal"> Usuarios Mikrotik </span>
                   </a>
                 </li>
                 <li class="nav-item ">
-                  <a class="nav-link" href="forms/validation.html">
-                    <span class="sidebar-mini"> VF </span>
-                    <span class="sidebar-normal"> Validation Forms </span>
+                  <a class="nav-link" href="<?php echo URLROOT; ?>/usuariosmikrotik/editarpassword">
+                    <span class="sidebar-mini"> ECM </span>
+                    <span class="sidebar-normal"> Editar contraseña MKT </span>
                   </a>
                 </li>
                 <li class="nav-item ">
-                  <a class="nav-link" href="forms/wizard.html">
-                    <span class="sidebar-mini"> W </span>
-                    <span class="sidebar-normal"> Wizard </span>
+                  <a class="nav-link" href="<?php echo URLROOT; ?>/usuariosmikrotik/editaridentidad">
+                    <span class="sidebar-mini"> EIM </span>
+                    <span class="sidebar-normal"> Editar identidad MKT </span>
+                  </a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="<?php echo URLROOT; ?>/usuariosmikrotik/reiniciarmikrotik">
+                    <span class="sidebar-mini"> RM </span>
+                    <span class="sidebar-normal"> Reiniciar Mikrotik </span>
                   </a>
                 </li>
               </ul>
             </div>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" data-toggle="collapse" href="#tablesExamples">
-              <i class="material-icons">grid_on</i>
-              <p> Tables
-                <b class="caret"></b>
-              </p>
-            </a>
-            <div class="collapse" id="tablesExamples">
-              <ul class="nav">
-                <li class="nav-item ">
-                  <a class="nav-link" href="tables/regular.html">
-                    <span class="sidebar-mini"> RT </span>
-                    <span class="sidebar-normal"> Regular Tables </span>
-                  </a>
-                </li>
-                <li class="nav-item ">
-                  <a class="nav-link" href="tables/extended.html">
-                    <span class="sidebar-mini"> ET </span>
-                    <span class="sidebar-normal"> Extended Tables </span>
-                  </a>
-                </li>
-                <li class="nav-item ">
-                  <a class="nav-link" href="tables/datatables.net.html">
-                    <span class="sidebar-mini"> DT </span>
-                    <span class="sidebar-normal"> DataTables.net </span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" data-toggle="collapse" href="#mapsExamples">
-              <i class="material-icons">place</i>
-              <p> Maps
-                <b class="caret"></b>
-              </p>
-            </a>
-            <div class="collapse" id="mapsExamples">
-              <ul class="nav">
-                <li class="nav-item ">
-                  <a class="nav-link" href="maps/google.html">
-                    <span class="sidebar-mini"> GM </span>
-                    <span class="sidebar-normal"> Google Maps </span>
-                  </a>
-                </li>
-                <li class="nav-item ">
-                  <a class="nav-link" href="maps/fullscreen.html">
-                    <span class="sidebar-mini"> FSM </span>
-                    <span class="sidebar-normal"> Full Screen Map </span>
-                  </a>
-                </li>
-                <li class="nav-item ">
-                  <a class="nav-link" href="maps/vector.html">
-                    <span class="sidebar-mini"> VM </span>
-                    <span class="sidebar-normal"> Vector Map </span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="widgets.html">
-              <i class="material-icons">widgets</i>
-              <p> Widgets </p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="charts.html">
-              <i class="material-icons">timeline</i>
-              <p> Charts </p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="calendar.html">
-              <i class="material-icons">date_range</i>
-              <p> Calendar </p>
-            </a>
-          </li>
+          
         </ul>
       </div>
     </div>

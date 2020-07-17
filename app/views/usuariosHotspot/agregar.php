@@ -18,7 +18,7 @@
                                 <div class="card-icon">
                                 <i class="material-icons"></i>
                                 </div>
-                                <h4 class="card-title">agregar usuario</h4>
+                                <h4 class="card-title">agregar usuario hotspot</h4>
                             </div>
                             <div class="card-body ">
                                 <div class="row">
