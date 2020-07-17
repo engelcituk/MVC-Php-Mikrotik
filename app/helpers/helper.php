@@ -7,37 +7,36 @@ function redirect($pagina){
 
 function activeMenu($url){
     //obtener la url
-    $base = '/base';
     $directoryURI = $_SERVER['REQUEST_URI'];
     $path = parse_url($directoryURI, PHP_URL_PATH);
     
-    
-
-    return $path   ;
-   // retornamos
-   // return $second_part;
+    return $active = ($url == $path) ? 'active' : ''; 
 }
 
-function setCollapseShow($url){
-    //obtener la url
+function activeMenuArray($urlArray){ //recibo un array
     $directoryURI = $_SERVER['REQUEST_URI'];
-    $path = parse_url($directoryURI, PHP_URL_PATH);
-    $components = explode('/', $path);
-    //tomamos cada pedazo de url
-    $first_part = $components[1];
-    $second_part = $components[2];
-    $third_part = $components[3];
-    // verficamos cada parte
-    if($third_part == $url){
-        return $show = 'show';
+    $path = array (parse_url($directoryURI, PHP_URL_PATH));
+    $existe = false;
+    
+    foreach ($urlArray as $value) {
+        if (in_array($value, $path)) { //path el valor permitido
+            $existe = true;
+            break;
+        } 
     }
-    if($second_part == $url){
-        return $show = 'show';
-    }
+    return $active = $existe  ? 'active' : '';
+}
 
-    if($first_part == $url && !$second_part && !$third_part){
-        return $show = 'show';
+function setCollapseShowArray($urlArray){ //recibo un array
+    $directoryURI = $_SERVER['REQUEST_URI'];
+    $path = array (parse_url($directoryURI, PHP_URL_PATH));
+    $existe = false;
+    
+    foreach ($urlArray as $value) {
+        if (in_array($value, $path)) { //path el valor permitido
+            $existe = true;
+            break;
+        } 
     }
-   // retornamos
-    return $show;
+    return $show = $existe  ? 'show' : '';
 }

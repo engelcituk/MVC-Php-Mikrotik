@@ -18,7 +18,7 @@
                                 <div class="card-icon">
                                 <i class="material-icons"></i>
                                 </div>
-                                <h4 class="card-title">Global Sales by Top Locations <?php echo activeMenu('dashboard');?></h4>
+                                <h4 class="card-title">Global Sales by Top Locations <?php echo activeMenu([ROOTFOLDER.'dashboard']); ?></h4>
                                 
                             </div>
                             <div class="card-body ">

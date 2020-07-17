@@ -18,7 +18,7 @@
                                 <div class="card-icon">
                                 <i class="material-icons"></i>
                                 </div>
-                                <h4 class="card-title">Generador de GrupoLimiteAnchoBanda</h4>
+                                <h4 class="card-title">Generador de GrupoLimiteAnchoBanda <?php echo activeMenuArray([ROOTFOLDER.'grupolimiteanchobanda',ROOTFOLDER.'grupolimiteanchobanda/generador']); ?></h4>
                             </div>
                             <div class="card-body ">
                                 <div class="row">

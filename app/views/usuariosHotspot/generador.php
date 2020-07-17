@@ -18,7 +18,7 @@
                                 <div class="card-icon">
                                 <i class="material-icons"></i>
                                 </div>
-                                <h4 class="card-title">Generador de usuarios hotspot <?php echo activeMenu('bu');?></h4>
+                                <h4 class="card-title">Generador de usuarios hotspot </h4>
                             </div>
                             <div class="card-body ">
                                 <div class="row">
