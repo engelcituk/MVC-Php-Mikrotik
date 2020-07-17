@@ -18,7 +18,7 @@
                                 <div class="card-icon">
                                 <i class="material-icons"></i>
                                 </div>
-                                <h4 class="card-title">Global Sales by Top Locations</h4>
+                                <h4 class="card-title">Editar password</h4>
                             </div>
                             <div class="card-body ">
                                 <div class="row">
