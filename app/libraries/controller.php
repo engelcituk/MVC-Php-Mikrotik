@@ -24,5 +24,13 @@ ini_set('display_errors', 1);
             die('La vista no existe');
         }
     }
+    // requiero la clase routeros_api y genero una instancia de esta
+    public function routerosAPI()
+    {
+        require_once 'routeros_api.php'; //ubicado dentro de la carpeta libraries
+
+        return new routeros_api(); //genero la instancia
+        
+    }
 
  }

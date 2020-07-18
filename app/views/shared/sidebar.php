@@ -1,10 +1,10 @@
 <div class="sidebar" data-color="rose" data-background-color="black" data-image="<?php echo URLROOT; ?>/img/sidebar-1.jpg">
       <div class="logo">
         <a href="#" class="simple-text logo-mini">
-          CT
+          MK
         </a>
         <a href="#" class="simple-text logo-normal">
-          Creative Tim
+          Mikrotik php
         </a>
       </div>
       <div class="sidebar-wrapper">

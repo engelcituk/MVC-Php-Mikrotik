@@ -73,7 +73,7 @@
                   </span>
                 </div>
                 <div class="card-footer justify-content-center">
-                  <a href="#pablo" class="btn btn-rose btn-link btn-lg">Lets Go</a>
+                  <button class="btn btn-primary">Iniciar sesión</button>
                 </div>
               </div>
             </form>

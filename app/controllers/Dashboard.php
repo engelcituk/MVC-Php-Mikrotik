@@ -5,6 +5,7 @@ class Dashboard extends Controller {
     public $ok;
     public $mensaje;
     public $objeto;
+    public $API;
 
     public function __construct()
     {       
@@ -13,15 +14,17 @@ class Dashboard extends Controller {
         }
         $this->postModel = $this->model('Post');
         $this->userModel = $this->model('User'); */
+        $this->API = $this->routerosAPI(); 
     }
     public function index(){
         //obtengo los posts
-
+        //$hola = $this->API->hola();
+/* 
         $data =[
-            'posts'=>'hola'
+            'info'=>$hola
         ];
-        
-        $this->view('dashboard/index', $data);
+         */
+        $this->view('dashboard/index');
     }
 
     public function click()

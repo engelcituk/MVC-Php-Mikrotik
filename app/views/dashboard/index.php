@@ -12,14 +12,13 @@
                 <div class="content">
                     <div class="container-fluid">
                         <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-9">
                             <div class="card ">
                             <div class="card-header card-header-success card-header-icon">
-                                <div class="card-icon">
-                                <i class="material-icons"></i>
-                                </div>
-                                <h4 class="card-title">Global Sales by Top Locations <?php echo activeMenu([ROOTFOLDER.'dashboard']); ?></h4>
-                                <button class="btn btn-primary" onclick="miclick()">click</button>
+                                
+                                <h4 class="card-title">Pagina de inicio <?php //echo $data['info']; ?> </h4>
+                                <!-- <button class="btn btn-primary" onclick="miclick()">click</button> -->
+                                <img class="img-fluid" src="<?php echo URLROOT; ?>/img/mikrotik-logo.jpg" height="300px" alt="logo mikrotik"/>
                                 
                             </div>
                             <div class="card-body ">
