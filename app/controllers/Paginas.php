@@ -27,11 +27,6 @@ class Paginas extends Controller {
 
     }
 
-    public function about(){
-
-        $this->view('paginas/about');        
-    }
-
     public function login()
     {
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -60,6 +55,7 @@ class Paginas extends Controller {
                 $conectado = $this->conectar($data); //verifico si conecta con los datos al mikrotik
                 if($conectado){ //si se conecta, se crea las variables de sesion y redirijo al dashboard
                     $this->createUserSession($data);
+                    $this->datosConexionRouter($data);//se escribe en el archivo de configuración los datos de acceso al router
                     redirect('dashboard');                
                 }else{
                     $data['messageApi'] = '¡La conexión al Mikrotik FALLÓ! Verifique la conexión con el enrutador o el nombre de usuario/contraseña ¡Quizás no sean correctos!';
@@ -106,6 +102,26 @@ class Paginas extends Controller {
         session_destroy();// destruyo la sesion 
 
         redirect('paginas/login'); //redirijo la raiz
+    }
+
+    public function datosConexionRouter($data)
+    {
+        $archivo = 'conexionRouter.php';
+
+        $ip = $data["ip"];
+        $username = $data["username"];
+        $password = $data["password"];
+     
+        $manejador = fopen('../app/config/'.$archivo, 'w') or die('No puede abrir el archivo '.$archivo);
+        $codigo = 
+        '<?php 
+            //datos de conexion router
+            define("ROUTER_IP", "'.$ip.'");
+            define("ROUTER_USER", "'.$username.'");
+            define("ROUTER_PASS", "'.$password.'");
+        ';
+        fwrite($manejador, $codigo);
+        fclose($manejador);
     }
     
 }
