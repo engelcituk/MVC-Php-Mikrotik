@@ -2,7 +2,7 @@
 session_start();
 
 function estaLogueado(){
-    if( isset( $_SESSION['usuario']) &&  isset( $_SESSION['tokencsrf'])){
+    if( isset( $_SESSION['usuario']) && isset( $_SESSION['tokencsrf'])){
         return true;
     }else {
         return false;

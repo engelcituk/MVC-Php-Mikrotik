@@ -55,10 +55,10 @@ class Paginas extends Controller {
             if(empty($data['username'])){
                 $data['username_err'] = 'Por favor ingrese el nombre de usuario';
             }
-            // se asegura que no haya erroes de validación
+            // se asegura que no haya errores de validación
             if( empty($data['ip_err']) && empty($data['username_err']) ){
                 $conectado = $this->conectar($data); //verifico si conecta con los datos al mikrotik
-                if($conectado){ //si se conecta, se crea las variables de sesion y redirijo
+                if($conectado){ //si se conecta, se crea las variables de sesion y redirijo al dashboard
                     $this->createUserSession($data);
                     redirect('dashboard');                
                 }else{

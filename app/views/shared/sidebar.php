@@ -10,19 +10,19 @@
       <div class="sidebar-wrapper">
         <div class="user">
           <div class="photo">
-            <img src="<?php echo URLROOT; ?>/img/avatar.jpg" />
+            <img src="<?php echo URLROOT; ?>/img/avatar.png" />
           </div>
           <div class="user-info">
             <a data-toggle="collapse" href="#collapseExample" class="username">
               <span>
-                Tania Andrew
+                 <?php echo $_SESSION['usuario'];?>
                 <b class="caret"></b>
               </span>
             </a>
             <div class="collapse" id="collapseExample">
               <ul class="nav">
                 <li class="nav-item">
-                  <a class="nav-link" href="#">
+                  <a class="nav-link" href="<?php echo URLROOT; ?>/usuariosmikrotik/editarperfilmikrotik">
                     <span class="sidebar-mini"> P </span>
                     <span class="sidebar-normal"> Perfil </span>
                   </a>
