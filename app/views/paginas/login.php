@@ -18,7 +18,7 @@
   </nav>
   <!-- End Navbar -->
   <div class="wrapper wrapper-full-page">
-    <div class="page-header login-page header-filter" filter-color="black" style="background-image: url('img/mikrotik-logo.jpg'); background-size: cover; background-position: top center;">
+    <div class="page-header login-page header-filter" filter-color="black" style="background-image: url('<?php echo URLROOT; ?>/img/mikrotik-logo.jpg'); background-size: cover; background-position: top center;">
       <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
       <div class="container">
         <div class="row">
@@ -64,8 +64,12 @@
                         </span>
                       </div>
                       <input type="password" class="form-control"  name="password" placeholder="Contraseña...">
+                      
                     </div>
                   </span>
+                  
+                  <br>
+                  <?php flashMensaje('messageApi'); ?>
                 </div>
                 <div class="card-footer justify-content-center">
                   <button class="btn btn-primary"> <i class="fas fa-sign-in-alt"></i> Iniciar sesión</button>

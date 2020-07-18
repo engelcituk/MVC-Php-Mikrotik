@@ -8,22 +8,16 @@ class Dashboard extends Controller {
     public $API;
 
     public function __construct()
-    {       
-        /* if (!isLoggedIn()) {
-            redirect('users/login');
+    {   
+        //$this->API = $this->routerosAPI(); 
+
+        if (!estaLogueado()) {
+            redirect('paginas/login');
         }
-        $this->postModel = $this->model('Post');
-        $this->userModel = $this->model('User'); */
-        $this->API = $this->routerosAPI(); 
+         
     }
     public function index(){
-        //obtengo los posts
-        //$hola = $this->API->hola();
-/* 
-        $data =[
-            'info'=>$hola
-        ];
-         */
+        
         $this->view('dashboard/index');
     }
 

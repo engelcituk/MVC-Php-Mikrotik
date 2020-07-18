@@ -2,15 +2,16 @@
 
 class Paginas extends Controller {
 
+    public $API;
     public function __construct()
     {
-        //$this->postModel= $this->model('Post');
+        $this->API = $this->routerosAPI(); 
 
     }
 
     public function index(){
-        $ok=false;
-        if($ok){
+       
+        if (estaLogueado()) {
             redirect('dashboard');
         }
         $data = [
@@ -18,7 +19,8 @@ class Paginas extends Controller {
             'username' => '',
             'password' => '',
             'ip_err' => '',
-            'username_err' => '' 
+            'username_err' => '',
+            'messageApi'=>''
         ];
         $this->view('paginas/login', $data);
 
@@ -41,7 +43,8 @@ class Paginas extends Controller {
                 'username' => trim($_POST['username']),
                 'password' => trim($_POST['password']),
                 'ip_err' => '',
-                'username_err' => '' 
+                'username_err' => '',
+                'messageApi'=>''
             ];
 
              //Validamos ip
@@ -54,7 +57,15 @@ class Paginas extends Controller {
             }
             // se asegura que no haya erroes de validación
             if( empty($data['ip_err']) && empty($data['username_err']) ){
-                redirect('dashboard');                
+                $conectado = $this->conectar($data); //verifico si conecta con los datos al mikrotik
+                if($conectado){ //si se conecta, se crea las variables de sesion y redirijo
+                    $this->createUserSession($data);
+                    redirect('dashboard');                
+                }else{
+                    $data['messageApi'] = '¡La conexión al Mikrotik FALLÓ! Verifique la conexión con el enrutador o el nombre de usuario/contraseña ¡Quizás no sean correctos!';
+                    flashMensaje('messageApi', $data['messageApi'], 'alert alert-danger');
+                    $this->view('paginas/login', $data);
+                }
             }else{
                 // carga la vista login con el arreglo de errores y se imprimirían en el formulario
                 $this->view('paginas/login', $data);
@@ -63,92 +74,38 @@ class Paginas extends Controller {
         } else {
             //Iniciar data
             $data = [
-                'email'=> '' ,
+                'ip'=> '',
+                'username' => '',
                 'password' => '',
-                'email_err' => '' ,
-                'password_err' => ''
+                'ip_err' => '',
+                'username_err' => '',
+                'messageApi'=>''
             ];
             // Cargar vista
             $this->view('paginas/login', $data);
         }      
     }
 
-    public function login2(){
-        // Verificar POST
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            //Procesa el formulario
-
-            //sanitizamos los datos que vienen por POST
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-            $data = [
-                'email'=> trim($_POST['email']) ,
-                'password' => trim($_POST['password']),
-                'email_err' => '',
-                'password_err' => '' 
-            ];
-            //Validamos el email
-            if(empty($data['email'])){
-                $data['email_err'] = 'Por favor ingrese su email';
-            }
-            //Validamos la contraseña
-            if(empty($data['password'])){
-                $data['password_err'] = 'Por favor ingrese la contraseña';
-            }
-            // verificar usuario / correo
-            if($this->userModel->findUserByEmail($data['email'])){
-                // usuario encontrado
-            }else{
-                // usuario no encontrado
-                $data['email_err'] = 'El usuario no se ha encontrado';
-            }
-            // asegurarse de que los errores esten vacíos
-            if( empty($data['email_err']) && empty($data['password_err']) ){
-                //validado
-                //verificar y configurar que el usuario se conecte
-                $user = $this->userModel->login($data['email'],$data['password']);// traigo los datos del usuario
-                //si user trae valor
-                if( $user ){
-                    // creamos variables de sesión
-                    $this->createUserSession( $user );
-                }else{
-                    $data['password_err'] = 'Contraseña incorrecta';
-                    //recargamos la vista
-                    $this->view('paginas/login', $data);
-                }
-            }else{
-                // carga la vista login con el arreglo de errores y se imprimirían en el formulario
-                $this->view('paginas/login', $data);
-            }
-            
-        }else{
-            //Iniciar data
-            $data = [
-                'email'=> '' ,
-                'password' => '',
-                'email_err' => '' ,
-                'password_err' => ''
-            ];
-            // Cargar vista
-            $this->view('users/login', $data);
-        }
+    public function conectar($data)
+    {
+        return  $this->API->connect($data['ip'],$data['username'],$data['password']); //verifico si se conecta, me regresa un booleano
+        
     }
-
-    public function createUserSession($user){
-        $_SESSION['user_id'] = $user->id;
-        $_SESSION['user_name'] = $user->name;
-        $_SESSION['user_email'] = $user->email;
-        redirect('posts');        
+    public function createUserSession($data){
+        $_SESSION['ip'] = $data['ip'];
+        $_SESSION['usuario'] = $data['username'];
+        $_SESSION['tokencsrf'] = csrf_token(); //token
+        redirect('dashboard');        
     }
     public function logout(){
         //elimino las variables de sesion 
-        unset($_SESSION['user_id']);
-        unset($_SESSION['user_name']);
-        unset($_SESSION['user_email']);
+        unset($_SESSION['ip']);
+        unset($_SESSION['usuario']);
+        unset($_SESSION['tokencsrf']);
 
         session_destroy();// destruyo la sesion 
 
-        redirect('users/login'); //redirijo
+        redirect('paginas/login'); //redirijo la raiz
     }
     
 }

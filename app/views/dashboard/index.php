@@ -1,6 +1,6 @@
 <?php require APPROOT . '/views/shared/head.php'; ?>
     <body class="">
-        <div class="wrapper ">
+        <div class="wrapper "> 
             <!-- sidebar -->
             <?php require APPROOT . '/views/shared/sidebar.php'; ?> 
             <!-- sidebar -->

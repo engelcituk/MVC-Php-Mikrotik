@@ -4,11 +4,10 @@ class GrupoLimiteAnchoBanda extends Controller {
    
     public function __construct()
     {       
-        /* if (!isLoggedIn()) {
-            redirect('users/login');
+        if (!estaLogueado()) {
+            redirect('paginas/login');
         }
-        $this->postModel = $this->model('Post');
-        $this->userModel = $this->model('User'); */
+
     }
     public function index(){
         //obtengo los posts
