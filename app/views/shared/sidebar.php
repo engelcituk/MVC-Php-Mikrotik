@@ -34,13 +34,13 @@
         <ul class="nav">
           <li class="nav-item <?php echo activeMenu(ROOTFOLDER.'dashboard'); ?>">
             <a class="nav-link" href="<?php echo URLROOT; ?>/dashboard">
-              <i class="material-icons">dashboard</i>
+            <i class="fas fa-tachometer-alt"></i>
               <p> Dashboard </p>
             </a>
           </li>
           <li class="nav-item <?php echo activeMenuArray([ROOTFOLDER.'usuarioshotspot']); ?>">
             <a class="nav-link" data-toggle="collapse" href="#pagesExamples">
-              <i class="material-icons">group</i>
+            <i class="fas fa-users"></i>
               <p> Usuarios hotspot
                 <b class="caret"></b>
               </p>
@@ -77,7 +77,7 @@
           </li>
           <li class="nav-item <?php echo activeMenuArray([ROOTFOLDER.'grupolimiteanchobanda',ROOTFOLDER.'grupolimiteanchobanda/generador']); ?>">
             <a class="nav-link" data-toggle="collapse" href="#componentsExamples">
-              <i class="material-icons">connect_without_contact</i>
+            <i class="fas fa-wifi"></i>
               <p> Grupo límite
                 <b class="caret"></b>
               </p>
@@ -103,7 +103,7 @@
           </li>
           <li class="nav-item <?php echo activeMenuArray([ROOTFOLDER.'usuariosmikrotik/editarperfilmikrotik',ROOTFOLDER.'usuariosmikrotik',ROOTFOLDER.'usuariosmikrotik/editarpassword',ROOTFOLDER.'usuariosmikrotik/editaridentidad',ROOTFOLDER.'usuariosmikrotik/reiniciarmikrotik']); ?>">
             <a class="nav-link" data-toggle="collapse" href="#formsExamples">
-              <i class="material-icons">menu</i>
+            <i class="fas fa-bars"></i>
               <p> Extras mikrotik
                 <b class="caret"></b>
               </p>

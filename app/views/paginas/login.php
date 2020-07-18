@@ -31,15 +31,17 @@
                 </div>
                 <div class="card-body ">
                   <p class="card-description text-center">Ingrese los datos solicitados</p>
-                  <span class="bmd-form-group">
+                  <span class="bmd-form-group ">
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text">
                         <i class="fas fa-map-pin"></i>
                         </span>
                       </div>
-                      <input type="text" class="form-control <?php echo (!empty($data['ip_err'])) ? 'is-invalid':''; ?>" name="ip" placeholder="Dirección ip" value="<?php echo $data['ip'];?>">
-                      <span class="invalid-feedback"><?php echo $data['ip_err'];?></span>
+                      
+                      <input type="text" class="form-control <?php echo (!empty($data['ip_err'])) ? 'is-invalid':''; ?>" name="ip" placeholder="Dirección ip" value="<?php echo $data['ip'];?>" >
+                
+                        <span class="invalid-feedback"><?php echo $data['ip_err'];?></span>
                     </div>
                   </span>
                   <span class="bmd-form-group">
