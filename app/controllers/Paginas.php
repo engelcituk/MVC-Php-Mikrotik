@@ -109,7 +109,7 @@ class Paginas extends Controller {
         $archivo = 'conexionRouter.php';
 
         $ip = $data["ip"];
-        $username = $data["username"];
+        $username = $data["username"]; 
         $password = $data["password"];
      
         $manejador = fopen('../app/config/'.$archivo, 'w') or die('No puede abrir el archivo '.$archivo);
