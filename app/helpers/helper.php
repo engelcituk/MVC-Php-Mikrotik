@@ -44,3 +44,7 @@ function setCollapseShowArray($urlArray){ //recibo un array
 function csrf_token(){
     return md5(uniqid(mt_rand(), true));
 }
+
+function connected($API){
+    return $API->connect(ROUTER_IP, ROUTER_USER, ROUTER_PASS);
+}

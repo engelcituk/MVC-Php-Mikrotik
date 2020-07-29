@@ -20,7 +20,7 @@
                                         </div>
                                         <h4 class="card-title">Usuarios hotspot</h4>
                                     </div>
-                                    
+                                   
                                     <div class="card-body ">
                                         <div class="material-datatables">
                                             <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
@@ -40,7 +40,8 @@
                                                     <?php 
                                                         if(count($data)>0){ //si los datos son mayores a cero
                                                             $contador = 1;
-                                                            foreach ($data as $item) {
+                                                            foreach ($data['users'] as  $item) {
+                                                                $id = "'".$item[".id"]."'";// pongo el id entre comillas
                                                                 echo '<tr>';
                                                                 echo '<td>'.$contador .'</td>';
                                                                 echo '<td>'.$item["name"].'</td>';
@@ -51,9 +52,9 @@
                                                                 echo '<td>'.$item["uptime"].'</td>';
                                                                 echo '
                                                                     <td class="text-right">
-                                                                        <a href="#" class="btn btn-sm btn-info  "><i class="fas fa-edit"></i></a>
-                                                                        <a href="#" class="btn btn-sm btn-danger "><i class="fas fa-trash"></i></a>
-                                                                        <a href="#" class="btn btn-sm btn-warning "><i class="fab fa-creative-commons-zero"></i></a>
+                                                                        <button class="btn btn-sm btn-info" onclick="showUserHotspot('.$id.')"><i class="fas fa-edit"></i></button>
+                                                                        <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                                                        <button class="btn btn-sm btn-warning"><i class="fab fa-creative-commons-zero"></i></button>
                                                                     </td>
                                                                 ';
                                                                 echo '</tr>';
@@ -72,6 +73,9 @@
                     </div>
                 </div>
             </div>
+            <!-- modal modalShowUser-->
+            <?php require APPROOT .'/views/usuariosHotspot/partials/modalShowUser.php'; ?> 
+            <!-- modal modalShowUser-->
             <!-- footer -->
             <?php require APPROOT . '/views/shared/footer.php'; ?> 
             <!-- footer -->

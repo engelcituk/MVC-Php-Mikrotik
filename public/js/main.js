@@ -11,9 +11,9 @@ function miclick() {
         }
       }); */
      $.ajax({
-		url: "dashboard/click", 
+		    url: "dashboard/click", 
         type: "POST",
-		dataType:"json",
+		    dataType:"json",
         data: {
           info:'Esto es una prueba',
         },
@@ -26,4 +26,4 @@ function miclick() {
             console.log('error')
         }
     }) 
-  }
+  } 

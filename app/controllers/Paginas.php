@@ -90,7 +90,7 @@ class Paginas extends Controller {
     public function createUserSession($data){
         $_SESSION['ip'] = $data['ip'];
         $_SESSION['usuario'] = $data['username'];
-        $_SESSION['tokencsrf'] = csrf_token(); //token
+        $_SESSION['tokencsrf'] = csrf_token(); //token generado gracias al helper
         redirect('dashboard');        
     }
     public function logout(){
