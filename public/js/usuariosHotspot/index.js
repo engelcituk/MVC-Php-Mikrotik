@@ -63,7 +63,6 @@ function saveUserHotspot() {
     password = document.getElementById("password").value;
     profile = $("#grupoLimiteAnchosBanda :selected").val();
     comment = document.getElementById("informacion").value;
-
     //creo el objeto user con los datos recogidos
     user = { id, username, password, profile, comment }
     
@@ -76,7 +75,16 @@ function saveUserHotspot() {
             tokenCsrf: token
         },
         success: function(respuesta) { //respuesta es un json
-            console.log(respuesta);            
+            ok = respuesta.ok;
+            if(ok){
+                mensaje= respuesta.mensaje;
+                showMessageNotify(mensaje, 'info', 2500); //muestro alerta
+                $('#showUserHotspot').modal('hide');
+                setTimeout(() => {
+                    location.reload();
+                }, 3000);
+            }
+                           
         },
         error: function(respuesta) {
             console.log('error')
@@ -84,3 +92,14 @@ function saveUserHotspot() {
     })
 
 }
+
+// funcion exclusiva para mostrar mensajes como notificaciones
+function showMessageNotify(mensaje, tipo, duracion) {
+    $.notify({							
+      message: `<i class="fa fa-sun"></i><strong> ${mensaje}</strong>`
+      },{								
+          type: tipo,
+          delay: duracion,
+          z_index: 3000,
+      });
+   } 

@@ -87,10 +87,32 @@ class UsuariosHotspot extends Controller {
         }
     }
     public function saveUserHotspot(){
+
         if (isset($_POST['user']) && $_POST['user'] && isset($_POST['tokenCsrf']) && $_POST['tokenCsrf']) {
-            
-            $respuesta = array ('ok' => true, 'mensaje' => 'respuesta controller','user'=>$_POST['user']);
-            
+
+            $usuario = $_POST['user']; //el usuario array
+
+            $name= $usuario['username'];
+            $password= $usuario['password'];
+            $profile= $usuario['profile'];
+            $comment= $usuario['comment'];
+            $id = $usuario['id'];
+
+            if($this->connected){
+
+                $this->API->write("/ip/hotspot/user/set",false); 
+                $this->API->write("=name=".$name,false);	
+                $this->API->write("=password=".$password,false);	
+                $this->API->write("=profile=".$profile,false);		
+                $this->API->write("=comment=".$comment,false);		
+                $this->API->write("=.id=".$id,true);
+                $this->API->read();
+
+                $respuesta = array ('ok' => true, 'mensaje' => 'Se ha actualizado los datos del usuario','user' => $usuario);
+
+            }else{
+                $respuesta = array ('ok' => true, 'mensaje' => 'No se ha podido actualizar los datos del usuario','user'=>[]);
+            }            
             echo json_encode($respuesta);
         }
     }
