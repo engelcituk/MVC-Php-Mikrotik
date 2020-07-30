@@ -24,13 +24,14 @@ class UsuariosHotspot extends Controller {
         } else {
             $users = [];
         } 
-        //Sí estoy connectado, otengo los grupos limite de ancho de banda y los guardo en un array
+        //Sí estoy connectado, obtengo los grupos limite de ancho de banda y los guardo en un array
         if($this->connected){
             $this->API->write("/ip/hotspot/user/profile/print");
             $anchosBanda = $this->API->read();;
         }else {
             $anchosBanda = [];
         }
+        
 	    $data = array('users' =>$users, 'anchosBanda' => $anchosBanda); // construyo un array con los datos obtenidos
 
         $this->view('usuariosHotspot/index', $data);
@@ -82,6 +83,14 @@ class UsuariosHotspot extends Controller {
                 $respuesta = array ('ok' => true, 'mensaje' => 'No se ha obtenido datos del usuario','user'=>[]);
             }
 
+            echo json_encode($respuesta);
+        }
+    }
+    public function saveUserHotspot(){
+        if (isset($_POST['user']) && $_POST['user'] && isset($_POST['tokenCsrf']) && $_POST['tokenCsrf']) {
+            
+            $respuesta = array ('ok' => true, 'mensaje' => 'respuesta controller','user'=>$_POST['user']);
+            
             echo json_encode($respuesta);
         }
     }

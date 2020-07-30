@@ -20,9 +20,9 @@ $(document).ready(function(){
     });
 });
 
-function showUserHotspot(id) {
+const token = document.getElementById("tokenCSRF").value; //obtengo el token, que está en campo oculto del modal showUserHotspot
 
-    const token = document.getElementById("tokenCSRF").value; //obtengo el token
+function showUserHotspot(id) {
 
     $.ajax({
         url: "usuarioshotspot/getInfoUserHotspot", 
@@ -32,16 +32,18 @@ function showUserHotspot(id) {
             idUser:id,
             tokenCsrf: token
         },
-        success: function(respuesta) {
+        success: function(respuesta) { //respuesta es un json
             ok = respuesta.ok;
             if(ok){
                 usuario = respuesta.user[0]; //regresa un array, se ocupa el de la posición 1
                 //si esos valores no existen, se mandan vacíos
+                idUser = usuario['.id'];
                 name = usuario.name || '';
                 password = usuario.password || '';
                 profile = usuario.profile || '';
                 comment = usuario.comment || '';
                 //se pinta en los campos los valores obtenidos
+                document.getElementById("idUserHotspot").value = idUser;
                 document.getElementById("username").value = name;
                 document.getElementById("password").value = password;
                 document.getElementById("grupoLimiteAnchosBanda").value = profile;
@@ -53,4 +55,32 @@ function showUserHotspot(id) {
             console.log('error')
         }
     })
+}
+
+function saveUserHotspot() {
+    id = document.getElementById("idUserHotspot").value ;
+    username = document.getElementById("username").value ;
+    password = document.getElementById("password").value;
+    profile = $("#grupoLimiteAnchosBanda :selected").val();
+    comment = document.getElementById("informacion").value;
+
+    //creo el objeto user con los datos recogidos
+    user = { id, username, password, profile, comment }
+    
+    $.ajax({
+        url: "usuarioshotspot/saveUserHotspot", 
+        type: "POST",
+        dataType:"json",
+        data: {
+            user,
+            tokenCsrf: token
+        },
+        success: function(respuesta) { //respuesta es un json
+            console.log(respuesta);            
+        },
+        error: function(respuesta) {
+            console.log('error')
+        }
+    })
+
 }
