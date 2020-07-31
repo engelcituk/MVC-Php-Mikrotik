@@ -13,6 +13,11 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
+                                <div class="dosBotones">
+                                    <a href="<?php echo URLROOT; ?>/usuarioshotspot/agregar" class="btn btn-info mr-auto" > <i class="fa fa-user"></i> Agregar usuario</a> 
+                                    <a href="<?php echo URLROOT; ?>/usuarioshotspot/generador" class="btn btn-info" > <i class="fa fa-users"></i> Agregar usuarios</a> 
+                                </div>
+                                
                                 <div class="card ">
                                     <div class="card-header card-header-success card-header-icon">
                                         <div class="card-icon">
@@ -42,9 +47,10 @@
                                                             $contador = 1;
                                                             foreach ($data['users'] as  $item) {
                                                                 $id = "'".$item[".id"]."'";// pongo el id entre comillas
+                                                                $username = "'".$item["name"]."'";
                                                                 echo '<tr>';
                                                                 echo '<td>'.$contador .'</td>';
-                                                                echo '<td>'.$item["name"].'</td>';
+                                                                echo '<td>'.$username.'</td>';
                                                                 echo '<td>'.$password = !empty($item['password']) ? $item["password"] : "".'</td>';
                                                                 echo '<td>'.$limitUptime = !empty($item['limit-uptime']) ? $item["limit-uptime"] : "".'</td>';
                                                                 echo '<td>'.$profile = !empty($item['profile']) ? $item["profile"] : "".'</td>';
@@ -53,8 +59,8 @@
                                                                 echo '
                                                                     <td class="text-right">
                                                                         <button class="btn btn-sm btn-info" onclick="showUserHotspot('.$id.')"><i class="fas fa-edit"></i></button>
-                                                                        <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
-                                                                        <button class="btn btn-sm btn-warning"><i class="fab fa-creative-commons-zero"></i></button>
+                                                                        <button class="btn btn-sm btn-danger" onclick="deleteUserHotspot('.$id.','.$username.')"><i class="fas fa-trash"></i></button>
+                                                                        <button class="btn btn-sm btn-default" onclick="resetCounterUserHotspot('.$id.','.$username.')"><i class="fab fa-creative-commons-zero"></i></button>
                                                                     </td>
                                                                 ';
                                                                 echo '</tr>';
@@ -84,4 +90,4 @@
         <?php require APPROOT . '/views/shared/scriptjs.php'; ?> 
         <script src="<?php echo URLROOT; ?>/js/usuariosHotspot/index.js"></script> <!-- Contiene el script para aplicar datatables -->
     </body>
-</html>
+</html> 

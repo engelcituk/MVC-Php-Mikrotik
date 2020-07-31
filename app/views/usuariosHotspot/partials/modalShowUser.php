@@ -18,17 +18,17 @@
             
             <div class="form-group">
               <label for="username" class="form-label"> Nombre de usuario *</label> 
-              <input type="Contraseña" class="form-control " id="username" required="true" name="Contraseña" aria-required="true" aria-invalid="false">
+              <input type="Contraseña" class="form-control " id="username" required="true" name="Contraseña" aria-required="true" aria-invalid="false" onkeyup="activeButton()">
               <label id="username-error" class="error" for="username"></label>
             </div>
             <div class="form-group">
                <label for="password" class="form-label"> Contraseña *</label> 
-              <input type="Contraseña" class="form-control " id="password" required="true" name="Contraseña" aria-required="true" aria-invalid="false">
+              <input type="Contraseña" class="form-control " id="password" required="true" name="Contraseña" aria-required="true" aria-invalid="false" onkeyup="activeButton()">
               <label id="password-error" class="error" for="password"></label>
             </div> 
             <div class="form-group">
               <label for="GLAB" class="form-label"> Grupo Limitación Ancho Banda *</label>
-              <select class="custom-select custom-select-sm" id="grupoLimiteAnchosBanda">
+              <select class="custom-select custom-select-sm" id="grupoLimiteAnchosBanda" onchange="activeButton()">
                 <option value=''>Elija</option>
                 <?php 
                   foreach ($data["anchosBanda"] as $item) {
@@ -41,7 +41,7 @@
             </div> 
             <div class="form-group">
               <label for="información" class="form-label"> Información *</label>
-              <textarea class="form-control" name="" id="informacion" rows="2"></textarea>
+              <textarea class="form-control" name="" id="informacion" rows="2" onkeyup="activeButton()" ></textarea>
             </div> 
                         
           </div>          
@@ -49,7 +49,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-warning mr-auto" data-dismiss="modal"> <i class="fas fa-window-close"></i> Cerrar</button>
-        <button type="button" class="btn btn-primary" onclick="saveUserHotspot()"> <i class="fas fa-save"></i> Guardar cambios</button>
+        <button type="button" class="btn btn-primary" id="btnSaveUserHotspot" onclick="saveUserHotspot()" disabled> <i class="fas fa-save"></i> Guardar cambios</button>
       </div>
     </div>
   </div>

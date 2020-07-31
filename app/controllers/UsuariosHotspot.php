@@ -80,7 +80,7 @@ class UsuariosHotspot extends Controller {
 
                 $respuesta = array ('ok' => true, 'mensaje' => 'Se ha obtenido los datos del usuario','user'=>$user);
             }else{
-                $respuesta = array ('ok' => true, 'mensaje' => 'No se ha obtenido datos del usuario','user'=>[]);
+                $respuesta = array ('ok' => false, 'mensaje' => 'No se ha obtenido datos del usuario','user'=>[]);
             }
 
             echo json_encode($respuesta);
@@ -111,9 +111,62 @@ class UsuariosHotspot extends Controller {
                 $respuesta = array ('ok' => true, 'mensaje' => 'Se ha actualizado los datos del usuario','user' => $usuario);
 
             }else{
-                $respuesta = array ('ok' => true, 'mensaje' => 'No se ha podido actualizar los datos del usuario','user'=>[]);
+                $respuesta = array ('ok' => false, 'mensaje' => 'No se ha podido actualizar los datos del usuario','user'=>[]);
             }            
             echo json_encode($respuesta);
         }
     }
+
+    public function deleteUserHotspot(){
+        
+        if (isset($_POST['id']) && $_POST['id'] && isset($_POST['tokenCsrf']) && $_POST['tokenCsrf']) {
+            
+            $id= $_POST['id'];
+
+            if($this->connected){
+                
+                $this->API->write("/ip/hotspot/user/remove",false);
+
+                $this->API->write("=.id=".$id,true);
+
+                $this->API->read();
+
+                $respuesta = array ('ok' => true, 'mensaje' => 'Se ha borrado exitosamente al usuario');
+
+            }else {
+
+                $respuesta = array ('ok' => false, 'mensaje' => 'No se ha podido borrar los datos del usuario');
+
+            }
+
+            echo json_encode($respuesta);
+        }        
+    }
+
+    public function resetCounterUserHotspot(){
+
+        if (isset($_POST['id']) && $_POST['id'] && isset($_POST['tokenCsrf']) && $_POST['tokenCsrf']) {
+
+            $id= $_POST['id'];
+
+            if($this->connected){
+
+                $this->API->write("/ip/hotspot/user/remove",false);	
+
+                $this->API->write("=.id=".$id,true);
+
+                $this->API->read();
+
+                $respuesta = array ('ok' => true, 'mensaje' => 'Se ha reseteado el contador del usuario');
+
+            } else {
+
+                $respuesta = array ('ok' => false, 'mensaje' => 'No se ha podido resetear el contador del usuario');
+
+            }
+
+            echo json_encode($respuesta);
+        }        
+    }
 }
+
