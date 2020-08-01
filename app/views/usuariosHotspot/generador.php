@@ -19,7 +19,11 @@
                                         <div class="card-icon">
                                             <i class="fas fa-users"></i>
                                         </div>
-                                        <h4 class="card-title">Generador de usuarios hotspot </h4>
+                                        <h4 class="card-title">Generador de usuarios hotspot <?php 
+                                        
+                                        echo tranformarTiempo(60, 'minuto')?> </h4>
+
+                                        
                                     </div>
                                     <div class="card-body ">
                                         <form action="<?php echo URLROOT.'/usuarioshotspot/generador'; ?>" method="post">

@@ -48,3 +48,47 @@ function csrf_token(){
 function connected($API){
     return $API->connect(ROUTER_IP, ROUTER_USER, ROUTER_PASS);
 }
+
+ 
+
+function generateUserString( $strength = 6) {
+    $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+    $input_length = strlen($permitted_chars );
+    $randomUserString = '';
+    for($i = 0; $i < $strength; $i++) {
+        $random_character = $permitted_chars [mt_rand(0, $input_length - 1)];
+        $randomUserString .= $random_character;
+    }
+ 
+    return $randomUserString;
+}
+
+function generateUserPasswordString($strength = 6) {
+    $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+    $input_length = strlen($permitted_chars );
+    $randomPasswordstring = '';
+    for($i = 0; $i < $strength; $i++) {
+        $random_character = $permitted_chars [mt_rand(0, $input_length - 1)];
+        $randomPasswordstring .= $random_character;
+    }
+ 
+    return $randomPasswordstring;
+}
+
+function tranformarTiempo($cantidad, $tiempo){
+    
+    switch ($tiempo) {
+        case 'minuto':
+            return '00:'.$cantidad.':00';
+            break;
+        case 'hora':
+            return $cantidad.':00:00';
+            break;
+        case 'dia':
+            $total = $cantidad * 24;
+            return $total.':00:00';           
+            break;
+    }
+}
