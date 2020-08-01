@@ -67,7 +67,7 @@ function activeButton() {
 
     $('#btnSaveUserHotspot').prop("disabled", disabled);
 }
-function saveUserHotspot() {
+function updateUserHotspot() {
     id = document.getElementById("idUserHotspot").value ;
     username = document.getElementById("username").value ;
     password = document.getElementById("password").value;
@@ -80,7 +80,7 @@ function saveUserHotspot() {
 
     
     $.ajax({
-        url: "usuarioshotspot/saveUserHotspot", 
+        url: "usuarioshotspot/updateUserHotspot", 
         type: "POST",
         dataType:"json",
         data: {

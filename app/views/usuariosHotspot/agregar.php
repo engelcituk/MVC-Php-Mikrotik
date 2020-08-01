@@ -14,6 +14,9 @@
                         <div class="row">
                         <div class="col-md-12">
                             <a href="<?php echo URLROOT; ?>/usuarioshotspot" class="btn btn-warning mr-auto" > <i class="fas fa-arrow-left"></i> Volver</a>
+                            
+                            <?php flashMensaje('messageApi'); ?>
+
                             <div class="card ">
                                 <div class="card-header card-header-success card-header-icon">
                                     <div class="card-icon">
