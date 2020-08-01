@@ -30,7 +30,7 @@ class Paginas extends Controller {
     public function login()
     {
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            //sanitizamos los datos que vienen por POST
+            //saneamos los datos que vienen por POST
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $data = [
@@ -47,7 +47,7 @@ class Paginas extends Controller {
                 $data['ip_err'] = 'Por favor ingrese la ip';
             }
             //Validamos username
-            if(empty($data['username'])){
+            if(empty($data['username'])){ 
                 $data['username_err'] = 'Por favor ingrese el nombre de usuario';
             }
             // se asegura que no haya errores de validación

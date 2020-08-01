@@ -57,13 +57,76 @@ class UsuariosHotspot extends Controller {
         $this->view('usuariosHotspot/generador', $data);
     }
     public function agregar(){
-        //obtengo los posts
+        //Sí estoy connectado, obtengo los grupos limite de ancho de banda y los guardo en un array
+        if($this->connected){
+            $this->API->write("/ip/hotspot/user/profile/print");
+            $anchosBanda = $this->API->read();;
+        }else { 
+            $anchosBanda = [];
+        }
 
-        $data =[
-            'posts'=>'hola'
-        ];
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            //saneamos los datos que vienen por POST
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $fields = [
+                'username'=> trim($_POST['username']) ,
+                'password' => trim($_POST['password']),
+                'grupoLimiteAnchosBanda' => trim($_POST['grupoLimiteAnchosBanda']),
+                'informacion' => trim($_POST['informacion']),
+                'username_err' => '',
+                'password_err' => '',
+                'grupoLimiteAnchosBanda_err'=>'',
+                'informacion_err'=>''
+            ];
+
+            //Validamos username
+            if(empty($fields['username'])){
+                $fields['username_err'] = 'Por favor ingrese el nombre de usuario';
+            }
+            //Validamos password
+            if(empty($fields['password'])){ 
+                $fields['password_err'] = 'Por favor ingrese la contraseña para el usuario';
+            }
+             //Validamos grupoLimiteAnchosBanda
+            if(empty($fields['grupoLimiteAnchosBanda'])){ 
+                $fields['grupoLimiteAnchosBanda_err'] = 'Por favor elija un elemento de la lista';
+            }
+             //Validamos informacion
+             if(empty($fields['informacion'])){ 
+                $fields['informacion_err'] = 'Por favor ingrese el precio';
+            }
+
+            //sino hay ningún campo vacío guardamos los datos
+            if(empty($fields['username_err']) && empty($fields['password_err'])
+               && empty($fields['grupoLimiteAnchosBanda_err']) && empty($fields['informacion_err']) ){
+
+            }else{
+
+                $data = array('anchosBanda' => $anchosBanda, 'fields' => $fields ); // construyo un array con los datos obtenidos
+
+                $this->view('usuariosHotspot/agregar', $data);
+
+            }
+        } else {
+
+            //Iniciar dataFields
+            $fields = [
+                'username'=> '',
+                'password' => '',
+                'grupoLimiteAnchosBanda' => '',
+                'informacion'=>'',
+                'username_err' => '',
+                'password_err' => '',
+                'grupoLimiteAnchosBanda_err'=>'',
+                'informacion_err'=>''
+            ];
+
+            $data = array('anchosBanda' => $anchosBanda, 'fields' => $fields ); // construyo un array con los datos obtenidos
+
+            $this->view('usuariosHotspot/agregar', $data);
+        }
         
-        $this->view('usuariosHotspot/agregar', $data);
     }
     //obtengo los datos del usuario, desde una llamada ajax, ocupo el token csrf
     public function getInfoUserHotspot(){

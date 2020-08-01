@@ -23,7 +23,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
-            <form class="form"  action="<?php echo URLROOT . '/paginas/login'; ?>" method="post"">
+            <form class="form"  action="<?php echo URLROOT . '/paginas/login'; ?>" method="post">
               <div class="card card-login card-hidden">
                 <div class="card-header card-header-rose text-center">
                   <h4 class="card-title">Iniciar sesión</h4>
@@ -41,7 +41,7 @@
                       
                       <input type="text" class="form-control <?php echo (!empty($data['ip_err'])) ? 'is-invalid':''; ?>" name="ip" placeholder="Dirección ip" value="<?php echo $data['ip'];?>" >
                 
-                        <span class="invalid-feedback"><?php echo $data['ip_err'];?></span>
+                        <lavel class="invalid-feedback"><?php echo $data['ip_err'];?></lavel>
                     </div>
                   </span>
                   <span class="bmd-form-group">
@@ -49,7 +49,7 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text">
                         <i class="fas fa-user"></i>
-                        </span>
+                        </span> 
                       </div>
                       <input type="text" class="form-control <?php echo (!empty($data['username_err'])) ? 'is-invalid':''; ?>" name="username" placeholder="nombre de usuario" value="<?php echo $data['username'];?>">
                       <span class="invalid-feedback"><?php echo $data['username_err'];?></span>
