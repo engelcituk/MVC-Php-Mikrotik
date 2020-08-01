@@ -21,7 +21,7 @@ class UsuariosHotspot extends Controller {
         $users = $this->getUsersHotspot();
         //obtengo el listado de grupos limite de anchos de banda (o perfil)
         $anchosBanda = $this->getBandwidthLimitGroup();
-
+        // users se muestran en el datatables, anchosabanda en el modal de edit userhotspot
 	    $data = array('users' =>$users, 'anchosBanda' => $anchosBanda); // construyo un array con los datos obtenidos
 
         $this->view('usuariosHotspot/index', $data);
@@ -38,13 +38,56 @@ class UsuariosHotspot extends Controller {
     }
 
     public function generador(){
-        //obtengo los posts
+        //obtengo el listado de grupos limite de anchos de banda (o perfil)
+        $anchosBanda = $this->getBandwidthLimitGroup();
 
-        $data =[
-            'posts'=>'hola'
-        ];
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            //saneamos los datos que vienen por POST
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            //array de campos del formulario
+            $fields = [
+                'username'=> trim($_POST['username']) ,
+                'password' => trim($_POST['password']),
+                'grupoLimiteAnchosBanda' => trim($_POST['grupoLimiteAnchosBanda']),
+                'informacion' => trim($_POST['informacion']),
+                'username_err' => '',
+                'password_err' => '',
+                'grupoLimiteAnchosBanda_err'=>'',
+                'informacion_err'=>'',
+                'messageApi'=>''
+
+            ];
+
+        }else{
+
+             //Iniciar array de campos
+             $fields = [
+                'longitudUser'=> '',
+                'longitudPassword' => '',
+                'grupoLimiteAnchosBanda' => '',
+                'tipoTiempos'=>'',
+                'limiteTiempo'=>'',
+                'cantidadUsers'=>'',
+                'precio'=>'',
+
+                'longitudUser_err' => '',
+                'longitudPassword_err' => '',
+                'grupoLimiteAnchosBanda_err'=>'',
+                'tipoTiempos_err'=>'',
+                'limiteTiempo_err'=>'',
+                'cantidadUsers_err'=>'',
+                'precio_err'=>'',
+                'messageApi' => ''
+            ];
+
+            $data = array('anchosBanda' => $anchosBanda, 'fields' => $fields ); // construyo un array con los datos
+
+            $this->view('usuariosHotspot/generador', $data);
+
+        }
         
-        $this->view('usuariosHotspot/generador', $data);
+       
     }
     public function agregar(){
         //obtengo el listado de grupos limite de anchos de banda (o perfil)
