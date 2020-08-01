@@ -47,17 +47,56 @@ class UsuariosHotspot extends Controller {
 
             //array de campos del formulario
             $fields = [
-                'username'=> trim($_POST['username']) ,
-                'password' => trim($_POST['password']),
+                'longitudUser'=> trim($_POST['longitudUser']) ,
+                'longitudPassword' => trim($_POST['longitudPassword']),
                 'grupoLimiteAnchosBanda' => trim($_POST['grupoLimiteAnchosBanda']),
-                'informacion' => trim($_POST['informacion']),
-                'username_err' => '',
-                'password_err' => '',
+                'tipoTiempos' => trim($_POST['tipoTiempos']),
+                'limiteTiempo' => trim($_POST['limiteTiempo']),
+                'cantidadUsers' => trim($_POST['cantidadUsers']),
+                'precio' => trim($_POST['precio']),
+                'longitudUser_err' => '',
+                'longitudPassword_err' => '',
                 'grupoLimiteAnchosBanda_err'=>'',
-                'informacion_err'=>'',
-                'messageApi'=>''
+                'tipoTiempos_err'=>'',
+                'limiteTiempo_err'=>'',
+                'cantidadUsers_err'=>'',
+                'precio_err'=>'',
+                'messageApi' => ''
 
             ];
+
+             //Sí longitudUser es vacía regresamos mensaje de validacíon
+             if(empty($fields['longitudUser'])){
+                $fields['longitudUser_err'] = 'Elija la longitud de caracteres para los usuarios';
+            }
+            //Sí longitudPassword es vacía regresamos mensaje de validacíon
+            if(empty($fields['longitudPassword'])){ 
+                $fields['longitudPassword_err'] = 'Elija la longitud de caracteres para las contraseñas';
+            }
+             //Sí grupoLimiteAnchosBanda es vacía regresamos mensaje de validacíon
+            if(empty($fields['grupoLimiteAnchosBanda'])){ 
+                $fields['grupoLimiteAnchosBanda_err'] = 'Por favor elija un elemento de la lista';
+            }
+             //Sí tipoTiempos es vacía regresamos mensaje de validacíon
+             if(empty($fields['tipoTiempos'])){ 
+                $fields['tipoTiempos_err'] = 'Por favor elija un tiempo';
+            }
+            //Sí limiteTiempo es vacía regresamos mensaje de validacíon
+            if(empty($fields['limiteTiempo'])){ 
+                $fields['limiteTiempo_err'] = 'Por favor ingrese el limite de tiempo';
+            }
+             //Sí cantidadUsers es vacía regresamos mensaje de validacíon
+            if(empty($fields['cantidadUsers'])){ 
+                $fields['cantidadUsers_err'] = 'Elija la cantidad de usuarios';
+            }
+             //Sí precio es vacía regresamos mensaje de validacíon
+             if(empty($fields['precio'])){ 
+                $fields['precio_err'] = 'Por favor ingrese el precio para los vouchers';
+            }
+
+            $data = array('anchosBanda' => $anchosBanda, 'fields' => $fields ); // construyo un array con los datos
+
+            $this->view('usuariosHotspot/generador', $data);
 
         }else{
 
@@ -70,7 +109,6 @@ class UsuariosHotspot extends Controller {
                 'limiteTiempo'=>'',
                 'cantidadUsers'=>'',
                 'precio'=>'',
-
                 'longitudUser_err' => '',
                 'longitudPassword_err' => '',
                 'grupoLimiteAnchosBanda_err'=>'',
@@ -198,6 +236,7 @@ class UsuariosHotspot extends Controller {
 
      }
     }
+    
     //obtengo los datos del usuario, desde una llamada ajax, ocupo el token csrf
     public function getInfoUserHotspot(){
         //si idUser está definida y se está recibiendo por post

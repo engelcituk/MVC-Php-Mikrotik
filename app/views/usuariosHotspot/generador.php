@@ -22,7 +22,7 @@
                                         <h4 class="card-title">Generador de usuarios hotspot </h4>
                                     </div>
                                     <div class="card-body ">
-                                        <form action="<?php echo URLROOT.'/usuarioshotspot/agregar'; ?>" method="post">
+                                        <form action="<?php echo URLROOT.'/usuarioshotspot/generador'; ?>" method="post">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group d-none">
