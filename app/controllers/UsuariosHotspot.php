@@ -430,6 +430,8 @@ class UsuariosHotspot extends Controller {
             $data = json_decode($_GET['data']);
             $this->view('usuariosHotspot/vouchers', $data);
 
+        }else{
+            $this->view('shared/noData');
         }
     }
 }
