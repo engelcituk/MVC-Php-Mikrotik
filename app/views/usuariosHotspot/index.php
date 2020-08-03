@@ -50,7 +50,7 @@
                                                                 $username = "'".$item["name"]."'";
                                                                 echo '<tr>';
                                                                 echo '<td>'.$contador .'</td>';
-                                                                echo '<td>'.$username.'</td>';
+                                                                echo '<td>'.$item["name"].'</td>';
                                                                 echo '<td>'.$password = !empty($item['password']) ? $item["password"] : "".'</td>';
                                                                 echo '<td>'.$limitUptime = !empty($item['limit-uptime']) ? $item["limit-uptime"] : "".'</td>';
                                                                 echo '<td>'.$profile = !empty($item['profile']) ? $item["profile"] : "".'</td>';

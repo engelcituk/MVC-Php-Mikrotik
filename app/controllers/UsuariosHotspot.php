@@ -94,9 +94,7 @@ class UsuariosHotspot extends Controller {
                 $fields['precio_err'] = 'Por favor ingrese el precio para los vouchers';
             }
 
-            $data = array('anchosBanda' => $anchosBanda, 'fields' => $fields ); // construyo un array con los datos
-
-            $this->view('usuariosHotspot/generador', $data);
+            $this->saveUsersHotspot($fields, $anchosBanda);
 
         }else{
 
@@ -123,10 +121,9 @@ class UsuariosHotspot extends Controller {
 
             $this->view('usuariosHotspot/generador', $data);
 
-        }
-        
-       
+        }       
     }
+
     public function agregar(){
         //obtengo el listado de grupos limite de anchos de banda (o perfil)
         $anchosBanda = $this->getBandwidthLimitGroup();
@@ -190,6 +187,69 @@ class UsuariosHotspot extends Controller {
         }
         
     }
+    public function saveUsersHotspot($fields, $anchosBanda){
+        //sino hay ningún campo vacío guardamos los datos
+        if( empty($fields['longitudUser_err']) && empty($fields['longitudPassword_err']) && 
+            empty($fields['grupoLimiteAnchosBanda_err']) && empty($fields['tipoTiempos_err']) &&
+            empty($fields['limiteTiempo_err']) && empty($fields['cantidadUsers_err']) &&
+            empty($fields['precio_err'])  ){
+
+            if( $this->connected){
+
+                $dataUsers = array();
+                
+                $profile = $fields['grupoLimiteAnchosBanda'];
+                $tiempo = tranformarTiempo($fields['limiteTiempo'], $fields['tipoTiempos']); //helper
+                $precio = $fields['precio'];
+
+                for ( $i=0; $i < $fields['cantidadUsers']; $i++) { 
+
+                    $username = generateUserString($fields['longitudUser']); //helper
+                    $password = generateUserPasswordString($fields['longitudPassword']); //helper
+                    
+                    $this->API->write("/ip/hotspot/user/add",false);	
+                    $this->API->write("=name=".$username,false);	
+                    $this->API->write("=password=".$password,false);	
+                    $this->API->write("=profile=".$profile,false);	
+                    $this->API->write("=limit-uptime=".$tiempo,false);		
+                    $this->API->write("=comment=".$precio,true);	
+                    $this->API->read();
+
+	                $dataUsers[]= ['name'=>$username,'password'=>$password, 'profile'=>$profile,'limitUptime'=>$tiempo, 'comment'=>$precio];
+
+                }
+                $dataUsers = json_encode($dataUsers);
+
+                $fields['messageApi'] = 'Generación de usuarios Hotspot realizados exitosamente.';
+          
+                flashMensaje('messageApi', $fields['messageApi'], 'alert alert-success'); 
+   
+                $data = array('anchosBanda' => $anchosBanda, 'fields' => $fields ); // construyo un array con los datos obtenidos
+
+                redirect('usuariosHotspot/generador'); // redirijo a la pagina sin los datos, porque se han guardado, pero se muestra el mensaje flash 
+                
+                
+            } else {
+                //si hubo falla al conectarse al mikrotik
+                $fields['messageApi'] = 'Falló la generación de usuarios Hotspot';
+
+                flashMensaje('messageApi', $fields['messageApi'], 'alert alert-danger'); 
+
+                $data = array('anchosBanda' => $anchosBanda, 'fields' => $fields ); // construyo un array con los datos obtenidos
+
+                $this->view('usuariosHotspot/generador', $data);
+                
+            }
+
+        } else { //si hay campos vacíos se regresa el array de errores y se conserva los campos rellenados, y los datos de anchos de banda
+
+            $data = array('anchosBanda' => $anchosBanda, 'fields' => $fields ); // construyo un array con los datos obtenidos
+   
+            $this->view('usuariosHotspot/generador', $data);
+   
+        }
+    }
+    
     //funcion que se encarga de procesar la logica de guardado, validar si campos están vacíos
     public function saveUserHotspot($fields, $anchosBanda){
         //sino hay ningún campo vacío guardamos los datos

@@ -46,11 +46,10 @@ function csrf_token(){
 }
 
 function connected($API){
-    return $API->connect(ROUTER_IP, ROUTER_USER, ROUTER_PASS);
+    return $API->connect(ROUTER_IP, ROUTER_USER, ROUTER_PASS); //constantes tomadas del archivo config/conexionRouter.php
 }
 
  
-
 function generateUserString( $strength = 6) {
     $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 

@@ -14,14 +14,15 @@
                         <div class="row">
                             <div class="col-md-12">
                             <a href="<?php echo URLROOT; ?>/usuarioshotspot" class="btn btn-warning mr-auto" > <i class="fas fa-arrow-left"></i> Volver</a> 
+                                
+                                <?php flashMensaje('messageApi'); ?>
+
                                 <div class="card ">
                                     <div class="card-header card-header-success card-header-icon">
                                         <div class="card-icon">
                                             <i class="fas fa-users"></i>
                                         </div>
-                                        <h4 class="card-title">Generador de usuarios hotspot <?php 
-                                        
-                                        echo tranformarTiempo(60, 'minuto')?> </h4>
+                                        <h4 class="card-title">Generador de usuarios hotspot</h4>
 
                                         
                                     </div>
@@ -64,13 +65,13 @@
 
                                                     <div class="form-group">
                                                         <label for="limiteTiempo" class="form-label"> Límite de tiempo *</label> 
-                                                        <input type="Contraseña" class="form-control" name="limiteTiempo" aria-required="true" value="<?php echo $data['fields']['limiteTiempo'];?>">
+                                                        <input type="Contraseña" class="form-control validarEntero" name="limiteTiempo" aria-required="true" value="<?php echo $data['fields']['limiteTiempo'];?>" placeholder="ingrese un numero para minutos, horas o días">
                                                         <span class="error"><?php echo $data['fields']['limiteTiempo_err'];?></span>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label for="información" class="form-label"> Precio *</label>
-                                                        <textarea class="form-control" name="precio" rows="2" aria-required="true"> <?php echo $data['fields']['precio'];?></textarea>
+                                                        <label for="información" class="form-label"> Precio </label>
+                                                        <textarea class="form-control" name="precio" rows="2" aria-required="true" > <?php echo $data['fields']['precio'];?></textarea>
                                                         <span class="error"><?php echo $data['fields']['precio_err'];?></span>
                                                     </div> 
                                                 </div>
@@ -138,5 +139,7 @@
             </div>
         </div>
         <?php require APPROOT . '/views/shared/scriptjs.php'; ?> 
+        <script src="<?php echo URLROOT; ?>/js/usuariosHotspot/generador.js"></script> <!-- Contiene el script para aplicar validaciones -->
+
     </body>
 </html>
