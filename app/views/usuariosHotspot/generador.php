@@ -140,6 +140,5 @@
         </div>
         <?php require APPROOT . '/views/shared/scriptjs.php'; ?> 
         <script src="<?php echo URLROOT; ?>/js/usuariosHotspot/generador.js"></script> <!-- Contiene el script para aplicar validaciones -->
-
     </body>
 </html>

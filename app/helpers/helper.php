@@ -4,7 +4,6 @@ function redirect($pagina){
     header('location: '.URLROOT.'/'.$pagina);
 }
 
-
 function activeMenu($url){
     //obtener la url
     $directoryURI = $_SERVER['REQUEST_URI'];

@@ -59,8 +59,8 @@
                                                                 echo '
                                                                     <td class="text-right">
                                                                         <button class="btn btn-sm btn-info" onclick="showUserHotspot('.$id.')"><i class="fas fa-edit"></i></button>
+                                                                        <button class="btn btn-sm btn-warning" onclick="resetCounterUserHotspot('.$id.','.$username.')"><i class="fas fa-hourglass-start"></i></button>
                                                                         <button class="btn btn-sm btn-danger" onclick="deleteUserHotspot('.$id.','.$username.')"><i class="fas fa-trash"></i></button>
-                                                                        <button class="btn btn-sm btn-default" onclick="resetCounterUserHotspot('.$id.','.$username.')"><i class="fab fa-creative-commons-zero"></i></button>
                                                                     </td>
                                                                 ';
                                                                 echo '</tr>';

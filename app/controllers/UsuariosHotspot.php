@@ -93,6 +93,7 @@ class UsuariosHotspot extends Controller {
              if(empty($fields['precio'])){ 
                 $fields['precio_err'] = 'Por favor ingrese el precio para los vouchers';
             }
+            
 
             $this->saveUsersHotspot($fields, $anchosBanda);
 
@@ -218,17 +219,15 @@ class UsuariosHotspot extends Controller {
 	                $dataUsers[]= ['name'=>$username,'password'=>$password, 'profile'=>$profile,'limitUptime'=>$tiempo, 'comment'=>$precio];
 
                 }
-                $dataUsers = json_encode($dataUsers);
-
+                
                 $fields['messageApi'] = 'Generación de usuarios Hotspot realizados exitosamente.';
           
-                flashMensaje('messageApi', $fields['messageApi'], 'alert alert-success'); 
+                flashMensaje('messageApiSuccess', $fields['messageApi'], 'alert alert-success'); 
    
                 $data = array('anchosBanda' => $anchosBanda, 'fields' => $fields ); // construyo un array con los datos obtenidos
 
-                redirect('usuariosHotspot/generador'); // redirijo a la pagina sin los datos, porque se han guardado, pero se muestra el mensaje flash 
-                
-                
+                redirect('usuariosHotspot/vouchers?data='.json_encode($dataUsers)); // redirijo a la pagina con los datos para ver los vouchers de users
+
             } else {
                 //si hubo falla al conectarse al mikrotik
                 $fields['messageApi'] = 'Falló la generación de usuarios Hotspot';
@@ -424,6 +423,14 @@ class UsuariosHotspot extends Controller {
 
         return $anchosBanda;
         
+    }
+
+    public function vouchers(){
+        if (isset($_GET['data'])){
+            $data = json_decode($_GET['data']);
+            $this->view('usuariosHotspot/vouchers', $data);
+
+        }
     }
 }
 
