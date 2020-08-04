@@ -11,6 +11,8 @@ class UsuariosHotspot extends Controller {
 
         $this->connected = connected($this->API); // llamo al helper connected y le paso la instancia de RouterOS
         
+        unset($_SESSION['data']); // sesion data se destruye, guarda el array de tickets de usuarios hotspot
+
         if (!estaLogueado()) {
             redirect('paginas/login');
         }
@@ -225,8 +227,10 @@ class UsuariosHotspot extends Controller {
                 flashMensaje('messageApiSuccess', $fields['messageApi'], 'alert alert-success'); 
    
                 $data = array('anchosBanda' => $anchosBanda, 'fields' => $fields ); // construyo un array con los datos obtenidos
+                
+                $_SESSION['data'] = json_encode($dataUsers);
 
-                redirect('usuariosHotspot/vouchers?data='.json_encode($dataUsers)); // redirijo a la pagina con los datos para ver los vouchers de users
+                redirect('usuariosHotspot/vouchers'); // redirijo a la pagina con los datos para ver los vouchers de users
 
             } else {
                 //si hubo falla al conectarse al mikrotik
@@ -426,12 +430,20 @@ class UsuariosHotspot extends Controller {
     }
 
     public function vouchers(){
-        if (isset($_GET['data'])){
-            $data = json_decode($_GET['data']);
+
+        if (isset($_SESSION['data'])){
+
+            $data = json_decode($_SESSION['data']);
             $this->view('usuariosHotspot/vouchers', $data);
 
-        }else{
-            $this->view('shared/noData');
+        }else if(isset($_GET['data'])){
+
+            $data = json_decode($_GET['data']);
+            $this->view('usuariosHotspot/vouchers', $data);
+            
+        } else {
+
+            $this->view('shared/noData');   
         }
     }
 }

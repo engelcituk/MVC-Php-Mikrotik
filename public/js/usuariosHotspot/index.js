@@ -1,24 +1,55 @@
 
 
-$(document).ready(function(){
-    $('#datatables').dataTable({
-        responsive: true,
-        language: {
-        "decimal": "",
-        "emptyTable": "No hay información",
-        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
-        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-        "infoPostFix": "",
-        "thousands": ",",
-        "lengthMenu": "Mostrar _MENU_ Entradas",
-        "loadingRecords": "Cargando...",
-        "processing": "Procesando...",
-        "search": "Buscar:",
-        "zeroRecords": "Sin resultados encontrados"
+
+let tablaUsers = $('#tablaUsers').DataTable({
+    responsive: true,
+    //bDestroy: true,
+    language: {
+    "decimal": "",
+    "emptyTable": "No hay información",
+    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+    "infoPostFix": "",
+    "thousands": ",",
+    "lengthMenu": "Mostrar _MENU_ Entradas",
+    "loadingRecords": "Cargando...",
+    "processing": "Procesando...",
+    "search": "Buscar:",
+    "zeroRecords": "Sin resultados encontrados"
     },
-    });
+})
+//para marcar como seleccionado una fila
+$('#tablaUsers tbody').on('click', 'tr', function () {
+    $(this).toggleClass('selected');
 });
+
+//para seleccionar todos los rows del datatable
+$(".selectAll").on( "click", function(e) {
+    if ($(this).is( ":checked" )) {
+        tablaUsers.rows().select();        
+    } else {
+        tablaUsers.rows().deselect(); 
+    }
+});
+function verTickets() {
+
+    let users = $.map(tablaUsers.rows('.selected').data(), function (item) {
+        return {'name':item[2], 'password':item[3],'profile':item[5], 'limitUptime':item[5],'comment':item[6]};
+    });
+
+    if(users.length > 0){
+
+        const data = JSON.stringify(users);
+
+        window.location.href = 'usuarioshotspot/vouchers?data='+data; // redirijo        
+        
+    } else {
+
+        showMessageNotify('Debes seleccionar un elemento de la tabla primero', 'danger', 2000); //muestro alerta
+
+    }       
+}
 
 const token = document.getElementById("tokenCSRF").value; //obtengo el token, que está en campo oculto del modal showUserHotspot
 

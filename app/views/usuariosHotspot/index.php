@@ -24,14 +24,33 @@
                                             <i class="fa fa-users"></i>
                                         </div>
                                         <h4 class="card-title">Usuarios hotspot</h4>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <button class="btn btn-primary" id="btnTickets" onclick="verTickets()"> <i class="fa fa-ticket-alt"></i> Ver tickets</button>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                        <input class="form-check-input selectAll" type="checkbox" value=""> Seleccionar todo
+                                                        <span class="form-check-sign">
+                                                        <span class="check"></span>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+
                                     </div>
                                    
                                     <div class="card-body ">
                                         <div class="material-datatables">
-                                            <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                                            <table id="tablaUsers" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
                                                 <thead>
                                                     <tr>
                                                     <th>No.</th>
+                                                    <th>ID</th>
                                                     <th>Usuario</th>
                                                     <th>Contraseña</th>
                                                     <th>Tiempo</th>
@@ -50,6 +69,7 @@
                                                                 $username = "'".$item["name"]."'";
                                                                 echo '<tr>';
                                                                 echo '<td>'.$contador .'</td>';
+                                                                echo '<td>'.$item[".id"] .'</td>';
                                                                 echo '<td>'.$item["name"].'</td>';
                                                                 echo '<td>'.$password = !empty($item['password']) ? $item["password"] : "".'</td>';
                                                                 echo '<td>'.$limitUptime = !empty($item['limit-uptime']) ? $item["limit-uptime"] : "".'</td>';

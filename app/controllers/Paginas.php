@@ -14,6 +14,7 @@ class Paginas extends Controller {
         if (estaLogueado()) {
             redirect('dashboard');
         }
+
         $data = [
             'ip'=> '' ,
             'username' => '',
