@@ -138,10 +138,14 @@ class UsuariosHotspot extends Controller {
             $fields = [
                 'username'=> trim($_POST['username']) ,
                 'password' => trim($_POST['password']),
+                'limiteTiempo'=>trim($_POST['limiteTiempo']),
+                'tipoTiempos'=>trim($_POST['tipoTiempos']),
                 'grupoLimiteAnchosBanda' => trim($_POST['grupoLimiteAnchosBanda']),
                 'informacion' => trim($_POST['informacion']),
                 'username_err' => '',
                 'password_err' => '',
+                'limiteTiempo_err' => '',
+                'tipoTiempos_err' => '',
                 'grupoLimiteAnchosBanda_err'=>'',
                 'informacion_err'=>'',
                 'messageApi'=>''
@@ -155,6 +159,14 @@ class UsuariosHotspot extends Controller {
             //Sí password es vacía regresamos mensaje de validacíon
             if(empty($fields['password'])){ 
                 $fields['password_err'] = 'Por favor ingrese la contraseña para el usuario';
+            }
+            //Sí limiteTiempo es vacía regresamos mensaje de validacíon
+            if(empty($fields['limiteTiempo'])){ 
+                $fields['limiteTiempo_err'] = 'Por favor indique un límite de tiempos';
+            }
+            //Sí tipoTiempos es vacía regresamos mensaje de validacíon
+            if(empty($fields['tipoTiempos'])){ 
+                $fields['tipoTiempos_err'] = 'Por favor seleccione el tipo de tiempo';
             }
              //Sí grupoLimiteAnchosBanda es vacía regresamos mensaje de validacíon
             if(empty($fields['grupoLimiteAnchosBanda'])){ 
@@ -174,10 +186,14 @@ class UsuariosHotspot extends Controller {
             $fields = [
                 'username'=> '',
                 'password' => '',
+                'limiteTiempo'=>'',
+                'tipoTiempos'=>'',
                 'grupoLimiteAnchosBanda' => '',
-                'informacion'=>'',
+                'informacion'=>'',  
                 'username_err' => '',
                 'password_err' => '',
+                'limiteTiempo_err' => '',
+                'tipoTiempos_err' => '',
                 'grupoLimiteAnchosBanda_err'=>'',
                 'informacion_err'=>'',
                 'messageApi' => ''
@@ -260,15 +276,19 @@ class UsuariosHotspot extends Controller {
 
          if($this->connected){
 
+             
              $username = $fields['username'];
              $password = $fields['password'];
-             $grupoLimiteAnchosBanda = $fields['grupoLimiteAnchosBanda'];
+             $grupoLimiteAnchosBanda = $fields['grupoLimiteAnchosBanda']; //perfil
+             $tiempo = tranformarTiempo($fields['limiteTiempo'], $fields['tipoTiempos']); //helper
              $precio = $fields['informacion'];
 
              $this->API->write("/ip/hotspot/user/add",false);	
              $this->API->write("=name=".$username,false);	
              $this->API->write("=password=".$password,false);	
-             $this->API->write("=profile=".$grupoLimiteAnchosBanda,false);			
+             $this->API->write("=profile=".$grupoLimiteAnchosBanda,false);
+             $this->API->write("=limit-uptime=".$tiempo,false);		
+
              $this->API->write("=comment=".$precio,true);	
 
              $this->API->read();
@@ -280,6 +300,7 @@ class UsuariosHotspot extends Controller {
              redirect('usuariosHotspot/agregar'); // redirijo a la pagina sin los datos, porque se han guardado, pero se muestra el mensaje flash               
                           
          } else {
+             
              $fields['messageApi'] = 'Falló el guardado del Usuario Hotspot';
 
              flashMensaje('messageApi', $fields['messageApi'], 'alert alert-danger'); 

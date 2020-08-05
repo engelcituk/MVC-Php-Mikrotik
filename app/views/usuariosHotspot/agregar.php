@@ -50,16 +50,17 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="GLAB" class="form-label"> Tipo de tiempos*</label>
+                                                    <label for="tt" class="form-label"> Tipo de tiempos*</label>
                                                     <select class="custom-select custom-select-sm" name="tipoTiempos">
-                                                        <option value="">Elija un tiempo</option>
-                                                        <option value="minuto">Minuto</option>
-                                                        <option value="hora">Hora</option>
-                                                        <option value="dia">Día </option>
+                                                        <option value="" <?php echo ($data['fields']['tipoTiempos'] == '' ) ? 'selected': ''; ?> >Elija un tiempo</option>
+                                                        <option value="minuto" <?php echo ($data['fields']['tipoTiempos'] == 'minuto' ) ? 'selected': ''; ?> >Minuto</option>
+                                                        <option value="hora" <?php echo ($data['fields']['tipoTiempos'] == 'hora' ) ? 'selected': ''; ?> >Hora</option>
+                                                        <option value="dia" <?php echo ($data['fields']['tipoTiempos'] == 'dia' ) ? 'selected': ''; ?> >Día </option>
                                                         
                                                     </select> 
                                                     <span class="error"><?php echo $data['fields']['tipoTiempos_err'];?></span>
                                                 </div>
+
 
                                                 <div class="form-group">
                                                     <label for="GLAB" class="form-label"> Grupo Limitación Ancho Banda *</label>
@@ -100,5 +101,7 @@
             </div>
         </div>
         <?php require APPROOT . '/views/shared/scriptjs.php'; ?> 
+        <script src="<?php echo URLROOT; ?>/js/usuariosHotspot/agregar.js"></script> <!-- Contiene el script para aplicar validaciones -->
+
     </body>
 </html>
