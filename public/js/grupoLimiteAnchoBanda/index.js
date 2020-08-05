@@ -51,7 +51,7 @@ function showHotspotsUserProfile(id) {
                 velocidad = velocidad.split("/"); 
                 comment = userProfile.comment || '';
                 //se pinta en los campos los valores obtenidos
-                document.getElementById("idUserHotspot").value = idUser;
+                document.getElementById("idHotspotUserProfile").value = idUser;
                 document.getElementById("name").value = name;
                 document.getElementById("sharedUsers").value = sharedUSers;
                  //tomo el primer valor del array {2048k , 2048k} y tomo solo el valor numerico
@@ -78,6 +78,43 @@ function activeButton() {
     let disabled = (name == '' || sharedUsers == '' || tipoUnidad == ''  || limite == '' ) ? true : false ;   
 
     $('#btnSavehotspotUserProfile').prop("disabled", disabled);
+}
+
+function updateHotspotUserProfile() {
+
+    id = document.getElementById("idHotspotUserProfile").value ;
+    name = document.getElementById("name").value ;
+    sharedUsers = document.getElementById("sharedUsers").value;
+    limite = document.getElementById("limite").value;
+    tipoUnidad = $("#tipoUnidad :selected").val();
+    //creo el objeto user con los datos recogidos
+    user = { id, name, sharedUsers, limite, tipoUnidad };
+
+    $.ajax({
+        url: "grupolimiteanchobanda/updateHotspotUserProfile", 
+        type: "POST",
+        dataType:"json",
+        data: {
+            user,
+            tokenCsrf: token
+        },
+        success: function(respuesta) { //respuesta es un json
+            ok = respuesta.ok;
+            if(ok){
+                mensaje= respuesta.mensaje;
+                showMessageNotify(mensaje, 'info', 2500); //muestro alerta
+                $('#hotspotUserProfile').modal('hide');
+                setTimeout(() => {
+                    location.reload();
+                }, 3000);
+            }
+                           
+        },
+        error: function(respuesta) {
+            console.log('error')
+        }
+    })
+
 }
 
 function deleteHotspotsUserProfile(id, username) {

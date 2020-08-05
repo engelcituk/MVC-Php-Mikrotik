@@ -13,7 +13,7 @@
         <div class="card-body ">
             <div class="form-group d-none">
               <input type="text" class="form-control " id="tokenCSRF" value="<?php echo $_SESSION["tokencsrf"]; ?>">
-              <input type="text" class="form-control " id="idUserHotspot">
+              <input type="text" class="form-control " id="idHotspotUserProfile">
             </div>
             
             <div class="form-group">
@@ -53,7 +53,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-warning mr-auto" data-dismiss="modal"> <i class="fas fa-window-close"></i> Cerrar</button>
-        <button type="button" class="btn btn-primary" id="btnSavehotspotUserProfile" onclick="updateUserHotspot()" disabled> <i class="fas fa-save"></i> Guardar cambios</button>
+        <button type="button" class="btn btn-primary" id="btnSavehotspotUserProfile" onclick="updateHotspotUserProfile()" disabled> <i class="fas fa-save"></i> Guardar cambios</button>
       </div>
     </div>
   </div>

@@ -98,6 +98,7 @@ function activeButton() {
 
     $('#btnSaveUserHotspot').prop("disabled", disabled);
 }
+
 function updateUserHotspot() {
     id = document.getElementById("idUserHotspot").value ;
     username = document.getElementById("username").value ;
@@ -106,8 +107,6 @@ function updateUserHotspot() {
     comment = document.getElementById("informacion").value;
     //creo el objeto user con los datos recogidos
     user = { id, username, password, profile, comment };
-
-    let disabled = (username == '' || password == '' || profile == ''  || comment == '' ) ? true : false ;
 
     $.ajax({
         url: "usuarioshotspot/updateUserHotspot", 

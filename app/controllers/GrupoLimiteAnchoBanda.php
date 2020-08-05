@@ -90,17 +90,16 @@ class GrupoLimiteAnchoBanda extends Controller {
             
             if($this->connected){
 
-                $nameGroup = $fields['nameGroup'];
-                $numberSharedUsers = $fields['numberSharedUsers'];
+                $name = $fields['nameGroup'];
+                $sharedUsers = $fields['numberSharedUsers'];
                 $limit = $fields['limit'];
-                $unidadLimit = $fields['unidadLimit'];
-                $velocidad = $limit.''.$unidadLimit.'/'.$limit.''.$unidadLimit;
+                $unidadLimite = $fields['unidadLimit'];
+                $rateLimit = $limit.''.$unidadLimite.'/'.$limit.''.$unidadLimite;
 
                 $this->API->write("/ip/hotspot/user/profile/add",false);	
-                $this->API->write("=name=".$nameGroup,false);	
-                $this->API->write("=shared-users=".$numberSharedUsers,false);	
-                $this->API->write("=rate-limit=".$velocidad,true);	
-
+                $this->API->write("=name=".$name,false);	
+                $this->API->write("=shared-users=".$sharedUsers,false);	
+                $this->API->write("=rate-limit=".$rateLimit,true);	
                 $this->API->read();
                 
                 $fields['messageApi'] = 'Datos guardados correctamente.';
@@ -168,6 +167,37 @@ class GrupoLimiteAnchoBanda extends Controller {
                 $respuesta = array ('ok' => false, 'mensaje' => 'No se ha obtenido datos' ,'userProfile'=>[]);
             }
 
+            echo json_encode($respuesta);
+        }
+    }
+
+    public function updateHotspotUserProfile(){
+
+        if (isset($_POST['user']) && $_POST['user'] && isset($_POST['tokenCsrf']) && $_POST['tokenCsrf']) {
+
+            $usuario = $_POST['user']; //el usuario array
+
+            $id = $usuario['id'];
+            $name= $usuario['name'];
+            $sharedUsers= $usuario['sharedUsers'];
+            $limite= $usuario['limite'];
+            $tipoUnidad= $usuario['tipoUnidad'];
+            $rateLimit = $limite.''.$tipoUnidad.'/'.$limite.''.$tipoUnidad;
+
+            if($this->connected){
+
+                $this->API->write("/ip/hotspot/user/profile/set",false);	
+                $this->API->write("=name=".$name,false);	
+                $this->API->write("=shared-users=".$sharedUsers,false);	
+                $this->API->write("=rate-limit=".$rateLimit,false);		
+                $this->API->write("=.id=".$id,true);
+                $this->API->read();
+
+                $respuesta = array ('ok' => true, 'mensaje' => 'Se ha actualizado los datos del usuario','user' => $usuario);
+
+            }else{
+                $respuesta = array ('ok' => false, 'mensaje' => 'No se ha podido actualizar los datos del usuario','user'=>[]);
+            }            
             echo json_encode($respuesta);
         }
     }

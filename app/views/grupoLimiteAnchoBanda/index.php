@@ -21,7 +21,7 @@
                                         <div class="card-icon">
                                             <i class="fas fa-wifi"></i>
                                         </div>
-                                        <h4 class="card-title">Usuarios hotspot</h4>    
+                                        <h4 class="card-title">Usuarios Perfil hotspot</h4>    
                                     </div>
                                    
                                     <div class="card-body ">
