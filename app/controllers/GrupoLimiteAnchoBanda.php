@@ -17,11 +17,10 @@ class GrupoLimiteAnchoBanda extends Controller {
 
     }
     public function index(){
-        //obtengo los posts
+        //obtengo los usersProfile
+        $usersProfile = $this->getHotspotsUsersProfile();
 
-        $data =[
-            'posts'=>'hola'
-        ];
+	    $data = array('usersProfile' =>$usersProfile); // construyo un array con los datos obtenidos
         
         $this->view('grupoLimiteAnchoBanda/index', $data);
     }
@@ -131,6 +130,72 @@ class GrupoLimiteAnchoBanda extends Controller {
             $this->view('grupoLimiteAnchoBanda/generador', $data);
 
         }
+    }
+
+    public function getHotspotsUsersProfile(){
+        //Sí estoy connectado, otengo los users hotspot, se guardan en un array
+        if($this->connected){
+
+	        $this->API->write('/ip/hotspot/user/profile/print');   
+            $usersProfile = $this->API->read();
+
+        } else {
+
+            $usersProfile = [];
+
+        } 
+
+        return $usersProfile;
+    }
+    public function getInfoHotspotUserProfile(){
+        //si idProfile está definida y se está recibiendo por post
+        if (isset($_POST['idProfile']) && $_POST['idProfile'] && isset($_POST['tokenCsrf']) && $_POST['tokenCsrf']) {
+
+            $idProfile= $_POST['idProfile'];
+
+            if($this->connected){
+
+                $this->API->write("/ip/hotspot/user/profile/print",false); 
+
+                $this->API->write("?.id=".$idProfile,true);   
+
+                $userProfile = $this->API->read();
+
+                $respuesta = array ('ok' => true, 'mensaje' => 'Se ha obtenido los datos' ,'userProfile'=>$userProfile);
+
+            } else {
+
+                $respuesta = array ('ok' => false, 'mensaje' => 'No se ha obtenido datos' ,'userProfile'=>[]);
+            }
+
+            echo json_encode($respuesta);
+        }
+    }
+
+    public function deleteHotspotsUserProfile(){
+        
+        if (isset($_POST['id']) && $_POST['id'] && isset($_POST['tokenCsrf']) && $_POST['tokenCsrf']) {
+            
+            $id= $_POST['id'];
+
+            if($this->connected){
+               
+                $this->API->write('/ip/hotspot/user/profile/remove',false);
+
+                $this->API->write('=.id='.$id,true);
+
+                $this->API->read();
+
+                $respuesta = array ('ok' => true, 'mensaje' => 'Se ha borrado exitosamente la información');
+
+            }else {
+
+                $respuesta = array ('ok' => false, 'mensaje' => 'No se ha podido borrar la información');
+
+            }
+
+            echo json_encode($respuesta);
+        }        
     }
 
 }

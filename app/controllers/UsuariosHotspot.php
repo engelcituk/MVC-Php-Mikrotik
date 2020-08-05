@@ -203,8 +203,8 @@ class UsuariosHotspot extends Controller {
 
             $this->view('usuariosHotspot/agregar', $data);
         }
-        
     }
+
     public function saveUsersHotspot($fields, $anchosBanda){
         //sino hay ningún campo vacío guardamos los datos
         if( empty($fields['longitudUser_err']) && empty($fields['longitudPassword_err']) && 
@@ -271,11 +271,11 @@ class UsuariosHotspot extends Controller {
     //funcion que se encarga de procesar la logica de guardado, validar si campos están vacíos
     public function saveUserHotspot($fields, $anchosBanda){
         //sino hay ningún campo vacío guardamos los datos
-        if(empty($fields['username_err']) && empty($fields['password_err'])
-        && empty($fields['grupoLimiteAnchosBanda_err']) && empty($fields['informacion_err']) ){
+        if( empty($fields['username_err']) && empty($fields['password_err']) && 
+            empty($fields['limiteTiempo_err']) && empty($fields['tipoTiempos_err']) &&
+            empty($fields['grupoLimiteAnchosBanda_err']) && empty($fields['informacion_err']) ){
 
          if($this->connected){
-
              
              $username = $fields['username'];
              $password = $fields['password'];
@@ -288,7 +288,6 @@ class UsuariosHotspot extends Controller {
              $this->API->write("=password=".$password,false);	
              $this->API->write("=profile=".$grupoLimiteAnchosBanda,false);
              $this->API->write("=limit-uptime=".$tiempo,false);		
-
              $this->API->write("=comment=".$precio,true);	
 
              $this->API->read();
@@ -300,7 +299,7 @@ class UsuariosHotspot extends Controller {
              redirect('usuariosHotspot/agregar'); // redirijo a la pagina sin los datos, porque se han guardado, pero se muestra el mensaje flash               
                           
          } else {
-             
+
              $fields['messageApi'] = 'Falló el guardado del Usuario Hotspot';
 
              flashMensaje('messageApi', $fields['messageApi'], 'alert alert-danger'); 
@@ -315,8 +314,8 @@ class UsuariosHotspot extends Controller {
          $data = array('anchosBanda' => $anchosBanda, 'fields' => $fields ); // construyo un array con los datos obtenidos
 
          $this->view('usuariosHotspot/agregar', $data);
-
      }
+     
     }
     
     //obtengo los datos del usuario, desde una llamada ajax, ocupo el token csrf

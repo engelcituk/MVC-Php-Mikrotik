@@ -78,6 +78,8 @@ function showUserHotspot(id) {
                 document.getElementById("grupoLimiteAnchosBanda").value = profile;
                 document.getElementById("informacion").value = comment;
                 $('#showUserHotspot').modal('show');//muestro el modal con los datos cargados
+                activeButton(); //se llama la funcion para activar/desactivar el botón de actualizar del modal
+
             }            
         },
         error: function(respuesta) {
@@ -85,8 +87,8 @@ function showUserHotspot(id) {
         }
     })
 }
+
 function activeButton() {
-    id = document.getElementById("idUserHotspot").value ;
     username = document.getElementById("username").value ;
     password = document.getElementById("password").value;
     profile = $("#grupoLimiteAnchosBanda :selected").val();
@@ -107,7 +109,6 @@ function updateUserHotspot() {
 
     let disabled = (username == '' || password == '' || profile == ''  || comment == '' ) ? true : false ;
 
-    
     $.ajax({
         url: "usuarioshotspot/updateUserHotspot", 
         type: "POST",
