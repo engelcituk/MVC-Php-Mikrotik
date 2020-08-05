@@ -11,7 +11,7 @@ class UsuariosHotspot extends Controller {
 
         $this->connected = connected($this->API); // llamo al helper connected y le paso la instancia de RouterOS
         
-        unset($_SESSION['data']); // sesion data se destruye, guarda el array de tickets de usuarios hotspot
+        // unset($_SESSION['data']); // sesion data se destruye, guarda el array
 
         if (!estaLogueado()) {
             redirect('paginas/login');
@@ -30,12 +30,11 @@ class UsuariosHotspot extends Controller {
     }
 
     public function activos(){
-        //obtengo los posts
+        //obtengo los usuarios activos
+        $usersActive = $this->getUsersHotspotActive();
 
-        $data =[
-            'posts'=>'hola'
-        ];
-        
+	    $data = array('users' =>$usersActive); // construyo un array con los datos obtenidos
+
         $this->view('usuariosHotspot/activos', $data);
     }
 
@@ -228,7 +227,7 @@ class UsuariosHotspot extends Controller {
    
                 $data = array('anchosBanda' => $anchosBanda, 'fields' => $fields ); // construyo un array con los datos obtenidos
                 
-                $_SESSION['data'] = json_encode($dataUsers);
+                $_SESSION['dataUsers'] = json_encode($dataUsers);
 
                 redirect('usuariosHotspot/vouchers'); // redirijo a la pagina con los datos para ver los vouchers de users
 
@@ -276,8 +275,6 @@ class UsuariosHotspot extends Controller {
              $fields['messageApi'] = 'Datos de usuario Hotspot guardados correctamente.';
           
              flashMensaje('messageApi', $fields['messageApi'], 'alert alert-success'); 
-
-             $data = array('anchosBanda' => $anchosBanda, 'fields' => $fields ); // construyo un array con los datos obtenidos
 
              redirect('usuariosHotspot/agregar'); // redirijo a la pagina sin los datos, porque se han guardado, pero se muestra el mensaje flash               
                           
@@ -416,6 +413,19 @@ class UsuariosHotspot extends Controller {
         return $users;
     }
 
+    public function getUsersHotspotActive(){
+        //Sí estoy connectado, otengo los users hotspot, se guardan en un array
+        if($this->connected){
+	        $this->API->write("/ip/hotspot/active/print");   
+
+            $usersActive = $this->API->read(); 
+        } else {
+            $usersActive = [];
+        } 
+
+        return $usersActive;
+    }
+
     public function getBandwidthLimitGroup(){
         //Sí estoy connectado, obtengo los grupos limite de ancho de banda y los guardo en un array
         if($this->connected){
@@ -430,19 +440,17 @@ class UsuariosHotspot extends Controller {
     }
 
     public function vouchers(){
+        if (isset($_SESSION['dataUsers']) && $_SESSION['dataUsers']){
 
-        if (isset($_SESSION['data'])){
-
-            $data = json_decode($_SESSION['data']);
+            $data = json_decode($_SESSION['dataUsers']);
             $this->view('usuariosHotspot/vouchers', $data);
 
-        }else if(isset($_GET['data'])){
-
+        }else if(isset($_GET['data']) && $_GET['data']){
+            
             $data = json_decode($_GET['data']);
             $this->view('usuariosHotspot/vouchers', $data);
-            
-        } else {
 
+        }else{
             $this->view('shared/noData');   
         }
     }

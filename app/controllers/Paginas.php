@@ -99,6 +99,8 @@ class Paginas extends Controller {
         unset($_SESSION['ip']);
         unset($_SESSION['usuario']);
         unset($_SESSION['tokencsrf']);
+        unset($_SESSION['dataUsers']);
+
 
         session_destroy();// destruyo la sesion 
 

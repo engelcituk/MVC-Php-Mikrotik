@@ -39,7 +39,7 @@
     
                                                 <div class="form-group">
                                                     <label for="password" class="form-label"> Contraseña *</label> 
-                                                    <input type="Contraseña" class="form-control" name="password" aria-required="true" value="<?php echo $data['fields']['password'];?>">
+                                                    <input type="password" class="form-control" name="password" aria-required="true" value="<?php echo $data['fields']['password'];?>">
                                                     <span class="error"><?php echo $data['fields']['password_err'];?></span>
                                                 </div>
     
@@ -65,7 +65,7 @@
                                                     <textarea class="form-control" name="informacion" rows="2" aria-required="true"> <?php echo $data['fields']['informacion'];?></textarea>
                                                     <span class="error"><?php echo $data['fields']['informacion_err'];?></span>
                                                 </div> 
-                                                <button class="btn btn-primary"> <i class="fas fa-save"></i> Gurdar usuario</button>
+                                                <button class="btn btn-primary"> <i class="fas fa-save"></i> Guardar usuario</button>
                                             </form>
                                         </div>
                                     </div>

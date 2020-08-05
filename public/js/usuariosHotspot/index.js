@@ -1,5 +1,4 @@
-
-
+const token = document.getElementById("tokenCSRF").value; //obtengo el token, que está en campo oculto del modal showUserHotspot
 
 let tablaUsers = $('#tablaUsers').DataTable({
     responsive: true,
@@ -41,7 +40,7 @@ function verTickets() {
     if(users.length > 0){
 
         const data = JSON.stringify(users);
-
+        
         window.location.href = 'usuarioshotspot/vouchers?data='+data; // redirijo        
         
     } else {
@@ -51,7 +50,6 @@ function verTickets() {
     }       
 }
 
-const token = document.getElementById("tokenCSRF").value; //obtengo el token, que está en campo oculto del modal showUserHotspot
 
 function showUserHotspot(id) {
 

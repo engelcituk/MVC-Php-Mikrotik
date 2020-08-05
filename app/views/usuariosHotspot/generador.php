@@ -65,7 +65,7 @@
 
                                                     <div class="form-group">
                                                         <label for="limiteTiempo" class="form-label"> Límite de tiempo *</label> 
-                                                        <input type="Contraseña" class="form-control validarEntero" name="limiteTiempo" aria-required="true" value="<?php echo $data['fields']['limiteTiempo'];?>" placeholder="ingrese un numero para minutos, horas o días">
+                                                        <input type="number" min="1" class="form-control validarEntero" name="limiteTiempo" aria-required="true" value="<?php echo $data['fields']['limiteTiempo'];?>" placeholder="ingrese un numero para minutos, horas o días">
                                                         <span class="error"><?php echo $data['fields']['limiteTiempo_err'];?></span>
                                                     </div>
 
