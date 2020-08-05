@@ -27,10 +27,10 @@ class GrupoLimiteAnchoBanda extends Controller {
     }
 
     public function generador(){
+
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             //saneamos los datos que vienen por POST
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
             //array de campos del formulario
             $fields = [
                 'nameGroup'=> trim($_POST['nameGroup']) ,
@@ -46,7 +46,7 @@ class GrupoLimiteAnchoBanda extends Controller {
             ];
 
              //Sí nameGroup es vacía regresamos mensaje de validacíon
-             if(empty($fields['nameGroup'])){
+            if(empty($fields['nameGroup'])){
                 $fields['nameGroup_err'] = 'Indique un nombre';
             }
             //Sí numberSharedUsers es vacía regresamos mensaje de validacíon

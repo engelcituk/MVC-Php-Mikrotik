@@ -42,7 +42,25 @@
                                                     <input type="password" class="form-control" name="password" aria-required="true" value="<?php echo $data['fields']['password'];?>">
                                                     <span class="error"><?php echo $data['fields']['password_err'];?></span>
                                                 </div>
-    
+
+                                                <div class="form-group">
+                                                    <label for="limiteTiempo" class="form-label"> Límite de tiempo *</label> 
+                                                    <input type="number" min="1" class="form-control validarEntero" name="limiteTiempo" aria-required="true" value="<?php echo $data['fields']['limiteTiempo'];?>" placeholder="ingrese un numero para minutos, horas o días">
+                                                    <span class="error"><?php echo $data['fields']['limiteTiempo_err'];?></span>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="GLAB" class="form-label"> Tipo de tiempos*</label>
+                                                    <select class="custom-select custom-select-sm" name="tipoTiempos">
+                                                        <option value="">Elija un tiempo</option>
+                                                        <option value="minuto">Minuto</option>
+                                                        <option value="hora">Hora</option>
+                                                        <option value="dia">Día </option>
+                                                        
+                                                    </select> 
+                                                    <span class="error"><?php echo $data['fields']['tipoTiempos_err'];?></span>
+                                                </div>
+
                                                 <div class="form-group">
                                                     <label for="GLAB" class="form-label"> Grupo Limitación Ancho Banda *</label>
                                                     <select class="custom-select custom-select-sm" name="grupoLimiteAnchosBanda">

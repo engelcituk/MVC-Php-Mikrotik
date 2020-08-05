@@ -259,10 +259,11 @@ class UsuariosHotspot extends Controller {
         && empty($fields['grupoLimiteAnchosBanda_err']) && empty($fields['informacion_err']) ){
 
          if($this->connected){
-             $username = trim($_POST['username']);
-             $password = trim($_POST['password']);
-             $grupoLimiteAnchosBanda = trim($_POST['grupoLimiteAnchosBanda']);
-             $precio = trim($_POST['informacion']);
+
+             $username = $fields['username'];
+             $password = $fields['password'];
+             $grupoLimiteAnchosBanda = $fields['grupoLimiteAnchosBanda'];
+             $precio = $fields['informacion'];
 
              $this->API->write("/ip/hotspot/user/add",false);	
              $this->API->write("=name=".$username,false);	
@@ -278,7 +279,7 @@ class UsuariosHotspot extends Controller {
 
              redirect('usuariosHotspot/agregar'); // redirijo a la pagina sin los datos, porque se han guardado, pero se muestra el mensaje flash               
                           
-         }else {
+         } else {
              $fields['messageApi'] = 'Falló el guardado del Usuario Hotspot';
 
              flashMensaje('messageApi', $fields['messageApi'], 'alert alert-danger'); 
