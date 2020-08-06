@@ -108,18 +108,24 @@
                 <b class="caret"></b>
               </p>
             </a>
-            <div class="collapse <?php echo setCollapseShowArray([ROOTFOLDER.'usuariosmikrotik/editarperfilmikrotik',ROOTFOLDER.'usuariosmikrotik',ROOTFOLDER.'usuariosmikrotik/editarpassword',ROOTFOLDER.'usuariosmikrotik/editaridentidad',ROOTFOLDER.'usuariosmikrotik/reiniciarmikrotik']); ?> " id="formsExamples">
+            <div class="collapse <?php echo setCollapseShowArray([ROOTFOLDER.'usuariosmikrotik/editarperfilmikrotik',ROOTFOLDER.'usuariosmikrotik',ROOTFOLDER.'usuariosmikrotik/editarpassword',ROOTFOLDER.'usuariosmikrotik/agregar',ROOTFOLDER.'usuariosmikrotik/editaridentidad',ROOTFOLDER.'usuariosmikrotik/reiniciarmikrotik']); ?> " id="formsExamples">
               <ul class="nav">
-                <li class="nav-item <?php echo activeMenu(ROOTFOLDER.'usuariosmikrotik/editarperfilmikrotik'); ?>">
-                  <a class="nav-link" href="<?php echo URLROOT; ?>/usuariosmikrotik/editarperfilmikrotik ">
-                    <span class="sidebar-mini"> P </span>
-                    <span class="sidebar-normal"> Perfil </span>
-                  </a>
-                </li>
                 <li class="nav-item <?php echo activeMenu(ROOTFOLDER.'usuariosmikrotik'); ?>">
                   <a class="nav-link" href="<?php echo URLROOT; ?>/usuariosmikrotik">
                     <span class="sidebar-mini"> UM </span>
                     <span class="sidebar-normal"> Usuarios Mikrotik </span>
+                  </a>
+                </li>
+                <li class="nav-item <?php echo activeMenu(ROOTFOLDER.'usuariosmikrotik/agregar'); ?>">
+                  <a class="nav-link" href="<?php echo URLROOT; ?>/usuariosmikrotik/agregar">
+                    <span class="sidebar-mini"> A </span>
+                    <span class="sidebar-normal"> Agregar </span>
+                  </a>
+                </li>
+                <li class="nav-item <?php echo activeMenu(ROOTFOLDER.'usuariosmikrotik/editarperfilmikrotik'); ?>">
+                  <a class="nav-link" href="<?php echo URLROOT; ?>/usuariosmikrotik/editarperfilmikrotik ">
+                    <span class="sidebar-mini"> P </span>
+                    <span class="sidebar-normal"> Perfil </span>
                   </a>
                 </li>
                 <li class="nav-item <?php echo activeMenu(ROOTFOLDER.'usuariosmikrotik/editarpassword'); ?>">

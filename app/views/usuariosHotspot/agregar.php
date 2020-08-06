@@ -60,7 +60,7 @@
                                                     </select> 
                                                     <span class="error"><?php echo $data['fields']['tipoTiempos_err'];?></span>
                                                 </div>
-
+ 
 
                                                 <div class="form-group">
                                                     <label for="GLAB" class="form-label"> Grupo Limitación Ancho Banda *</label>

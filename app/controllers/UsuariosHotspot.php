@@ -289,7 +289,6 @@ class UsuariosHotspot extends Controller {
              $this->API->write("=profile=".$grupoLimiteAnchosBanda,false);
              $this->API->write("=limit-uptime=".$tiempo,false);		
              $this->API->write("=comment=".$precio,true);	
-
              $this->API->read();
 
              $fields['messageApi'] = 'Datos de usuario Hotspot guardados correctamente.';

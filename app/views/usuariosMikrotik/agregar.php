@@ -22,19 +22,15 @@
                                 <div class="card-icon">
                                 <i class="fa fa-user"></i>
                                 </div>
-                                <h4 class="card-title">Perfil del Mikrotik</h4>
-                                
+                                <h4 class="card-title">Agregar usuario mikrotik</h4>
                             </div>
                             <div class="card-body ">
                                 <div class="row">
                                     <div class="col-md-6">
-                                
-                                        <form action="<?php echo URLROOT.'/usuariosmikrotik/editarperfilmikrotik'; ?>" method="post">
+                                        <form action="<?php echo URLROOT.'/usuariosmikrotik/agregar'; ?>" method="post">
                                         
                                             <div class="form-group d-none">
                                                 <input type="text" class="form-control" value="<?php echo $_SESSION["tokencsrf"]; ?>">
-                                                <input type="text" class="form-control" name="id" value="<?php echo $data['fields']['id'];?>">
-
                                             </div>
                                             
                                             <div class="form-group">
@@ -58,6 +54,12 @@
                                                 <span class="error" for="groupUser"><?php echo $data['fields']['groupUser_err'];?></span>
                                             </div>
 
+
+                                            <div class="form-group">
+                                                <label for="password" class="form-label"> Contraseña</label> 
+                                                <input type="password" class="form-control" aria-required="true" name="password" aria-invalid="false" value="<?php echo $data['fields']['password'];?>">
+                                                <span class="error" for="password"><?php echo $data['fields']['password_err'];?></span>
+                                            </div>
                                             
                                             <div class="form-group">
                                                 <label for="informacion" class="form-label"> Información *</label>
