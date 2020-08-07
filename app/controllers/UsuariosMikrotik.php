@@ -315,11 +315,38 @@ class UsuariosMikrotik extends Controller {
 
     public function reiniciarMikrotik(){
 
-        $data =[
-            'posts'=>'hola'
-        ];
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+            if (isset($_POST['tokenCsrf']) && $_POST['tokenCsrf']) {
+            
+                if($this->connected){
+                    
+                    $this->API->write('/system/reboot',true);	
+                    $this->API->read();
+
+                    $respuesta = array ('ok' => true, 'mensaje' => 'Reinicio del equipo '.$_SESSION['usuario'].' en proceso...');
+    
+                    unset($_SESSION['ip']);
+                    unset($_SESSION['usuario']);
+                    unset($_SESSION['tokencsrf']);
+                    unset($_SESSION['dataUsers']);
+                    session_destroy();// destruyo la sesion
+    
+                } else {
+    
+                    $respuesta = array ('ok' => false, 'mensaje' => 'No se ha podido reinicio el equipo');
+    
+                }
+                echo json_encode($respuesta);
+    
+            }
+
+        } else {
+            
+            $this->view('usuariosMikrotik/reiniciarMikrotik');             
+        }
+
         
-        $this->view('usuariosMikrotik/reiniciarMikrotik', $data);
     }
 
     public function editarPerfilMikrotik(){
@@ -501,5 +528,4 @@ class UsuariosMikrotik extends Controller {
             echo json_encode($respuesta);
         }        
     }
-
 }

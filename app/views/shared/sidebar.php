@@ -41,7 +41,7 @@
           <li class="nav-item <?php echo activeMenuArray([ROOTFOLDER.'usuarioshotspot']); ?>">
             <a class="nav-link" data-toggle="collapse" href="#pagesExamples">
             <i class="fas fa-users"></i>
-              <p> Usuarios hotspot
+              <p> Hotspot
                 <b class="caret"></b>
               </p>
             </a>
@@ -49,25 +49,25 @@
               <ul class="nav">
                 <li class="nav-item <?php echo activeMenu(ROOTFOLDER.'usuarioshotspot'); ?>">
                   <a class="nav-link" href="<?php echo URLROOT; ?>/usuarioshotspot">
-                    <span class="sidebar-mini"> UH </span>
+                    <span class="sidebar-mini"> <i class="fas fa-users"></i> </span>
                     <span class="sidebar-normal">Usuarios hotspot </span>
                   </a>
                 </li>
                 <li class="nav-item <?php echo activeMenu(ROOTFOLDER.'usuarioshotspot/activos'); ?>">
                   <a class="nav-link" href="<?php echo URLROOT; ?>/usuarioshotspot/activos">
-                    <span class="sidebar-mini"> UA </span>
+                    <span class="sidebar-mini"> <i class="fas fa-hourglass-start"></i> </span>
                     <span class="sidebar-normal"> Usuarios activos </span>
                   </a>
                 </li>
                 <li class="nav-item <?php echo activeMenu(ROOTFOLDER.'usuarioshotspot/generador'); ?>">
                   <a class="nav-link" href="<?php echo URLROOT; ?>/usuarioshotspot/generador">
-                    <span class="sidebar-mini"> G </span>
+                    <span class="sidebar-mini"> <i class="fas fa-plus-square"></i>  </span>
                     <span class="sidebar-normal"> Generador </span>
                   </a>
                 </li>
                 <li class="nav-item <?php echo activeMenu(ROOTFOLDER.'usuarioshotspot/agregar'); ?>">
                   <a class="nav-link" href="<?php echo URLROOT; ?>/usuarioshotspot/agregar">
-                    <span class="sidebar-mini"> AU </span>
+                    <span class="sidebar-mini"> <i class="fas fa-user"></i>  </span>
                     <span class="sidebar-normal"> Agregar usuario </span>
                   </a>
                 </li>
@@ -86,13 +86,13 @@
               <ul class="nav">
                 <li class="nav-item <?php echo activeMenu(ROOTFOLDER.'grupolimiteanchobanda'); ?>">
                   <a class="nav-link" href="<?php echo URLROOT; ?>/grupolimiteanchobanda">
-                    <span class="sidebar-mini"> LGL </span>
+                    <span class="sidebar-mini"> <i class="fas fa-list"></i> </span>
                     <span class="sidebar-normal"> Lista de grupo límite </span>
                   </a>
                 </li>
                 <li class="nav-item <?php echo activeMenu(ROOTFOLDER.'grupolimiteanchobanda/generador'); ?>">
                   <a class="nav-link" href="<?php echo URLROOT; ?>/grupolimiteanchobanda/generador">
-                    <span class="sidebar-mini"> AGL </span>
+                    <span class="sidebar-mini"> <i class="fas fa-layer-group"></i> </span>
                     <span class="sidebar-normal"> Agregar grupo limite </span>
                   </a>
                 </li>
@@ -112,44 +112,45 @@
               <ul class="nav">
                 <li class="nav-item <?php echo activeMenu(ROOTFOLDER.'usuariosmikrotik'); ?>">
                   <a class="nav-link" href="<?php echo URLROOT; ?>/usuariosmikrotik">
-                    <span class="sidebar-mini"> UM </span>
+                    <span class="sidebar-mini"> <i class="fas fa-users"></i> </span>
                     <span class="sidebar-normal"> Usuarios Mikrotik </span>
                   </a>
                 </li>
                 <li class="nav-item <?php echo activeMenu(ROOTFOLDER.'usuariosmikrotik/agregar'); ?>">
                   <a class="nav-link" href="<?php echo URLROOT; ?>/usuariosmikrotik/agregar">
-                    <span class="sidebar-mini"> A </span>
+                    <span class="sidebar-mini"> <i class="fas fa-plus-square"></i> </span>
                     <span class="sidebar-normal"> Agregar </span>
                   </a>
                 </li>
                 <li class="nav-item <?php echo activeMenu(ROOTFOLDER.'usuariosmikrotik/editarperfilmikrotik'); ?>">
                   <a class="nav-link" href="<?php echo URLROOT; ?>/usuariosmikrotik/editarperfilmikrotik ">
-                    <span class="sidebar-mini"> P </span>
+                    <span class="sidebar-mini"> <i class="fas fa-user-circle"></i> </span>
                     <span class="sidebar-normal"> Perfil </span>
                   </a>
                 </li>
                 <li class="nav-item <?php echo activeMenu(ROOTFOLDER.'usuariosmikrotik/editarpassword'); ?>">
                   <a class="nav-link" href="<?php echo URLROOT; ?>/usuariosmikrotik/editarpassword">
-                    <span class="sidebar-mini"> ECM </span>
+                    <span class="sidebar-mini"> <i class="fas fa-lock"></i> </span>
                     <span class="sidebar-normal"> Editar contraseña MKT </span>
                   </a>
                 </li>
                 <li class="nav-item <?php echo activeMenu(ROOTFOLDER.'usuariosmikrotik/editaridentidad'); ?>">
                   <a class="nav-link" href="<?php echo URLROOT; ?>/usuariosmikrotik/editaridentidad">
-                    <span class="sidebar-mini"> EIM </span>
+                    <span class="sidebar-mini"> <i class="fas fa-file-signature"></i> </span>
                     <span class="sidebar-normal"> Editar identidad MKT </span>
                   </a>
                 </li>
+                
                 <li class="nav-item <?php echo activeMenu(ROOTFOLDER.'usuariosmikrotik/reiniciarmikrotik'); ?>">
                   <a class="nav-link" href="<?php echo URLROOT; ?>/usuariosmikrotik/reiniciarmikrotik">
-                    <span class="sidebar-mini"> RM </span>
+                    <span class="sidebar-mini"> <i class="fas fa-power-off"></i> </span>
                     <span class="sidebar-normal"> Reiniciar Mikrotik </span>
                   </a>
                 </li>
               </ul>
             </div>
           </li>
-          
+
         </ul>
       </div>
     </div>
