@@ -248,11 +248,69 @@ class UsuariosMikrotik extends Controller {
 
     public function editarIdentidad(){
 
-        $data =[
-            'posts'=>'hola'
-        ];
-        
-        $this->view('usuariosMikrotik/editarIdentidad', $data);
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            //saneamos los datos que vienen por POST
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            //array de campos del formulario
+            $fields = [
+                'identidad' => trim($_POST['identidad']),
+                'identidad_err' => '',
+                'messageApi'=>''
+            ];
+            //Sí identidad es vacía regresamos mensaje de validación
+            if(empty($fields['identidad'])){
+                $fields['identidad_err'] = 'Por favor ingrese un nombre';
+            }
+
+            if( empty($fields['identidad_err']) ){
+
+                $identidad = $fields['identidad'];
+
+                if( $this->connected ) {
+
+                    $this->API->write('/system/identity/set',false);	
+                    $this->API->write('=name='.$identidad,true);
+                    $this->API->read();
+
+                    $fields['messageApi'] = 'Nombre del Mikrotik actualizado exitosamente.';
+          
+                    flashMensaje('messageApi', $fields['messageApi'], 'alert alert-success'); 
+
+                    redirect('usuariosMikrotik/editarIdentidad'); 
+
+                } else {
+
+                    $fields['messageApi'] = 'Falló la actualización del nombre para el Mikrotik';
+
+                    flashMensaje('messageApi', $fields['messageApi'], 'alert alert-danger'); 
+
+                    $data = array('fields' => $fields );
+
+                    $this->view('usuariosMikrotik/editarIdentidad', $data);
+                }
+            } else {
+
+                $data = array('fields' => $fields ); // construyo un array con los datos obtenidos
+    
+                $this->view('usuariosMikrotik/editarIdentidad', $data);
+            }
+            
+        } else {
+
+            $identidad = $this->getIdentityMikrotik(); // regresa un array, se debe acceder al indice 1 y su valor name
+
+            $fields = [
+                'identidad'=> $identidad[0]['name'],
+                'identidad_err' => '',
+                'messageApi'=>''
+            ];
+
+            $data = array('fields' => $fields );
+
+            $this->view('usuariosMikrotik/editarIdentidad', $data);
+
+        }
     }
 
     public function reiniciarMikrotik(){
@@ -407,6 +465,19 @@ class UsuariosMikrotik extends Controller {
 
         return $groupUsers;
     }
+
+    public function getIdentityMikrotik() {
+        //Sí estoy connectado, otengo  indetidad del mikrotik, se guardan en un array
+        if($this->connected){
+            $this->API->write('/system/identity/print'); 
+            $indetidad = $this->API->read(); 
+        } else {
+            $indetidad = [];
+        } 
+
+        return $indetidad;
+    }
+
 
     public function deleteUserMikrotik(){
         
