@@ -107,8 +107,8 @@ class Paginas extends Controller {
         redirect('paginas/login'); //redirijo la raiz
     }
 
-    public function datosConexionRouter($data)
-    {
+    public function datosConexionRouter($data){
+        
         $archivo = 'conexionRouter.php';
 
         $ip = $data["ip"];

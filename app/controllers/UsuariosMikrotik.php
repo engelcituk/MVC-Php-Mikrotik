@@ -96,9 +96,9 @@ class UsuariosMikrotik extends Controller {
     public function saveUserMikrotik($groupUsers , $fields){
        //sino hay ningún campo vacío guardamos los datos
        if(empty($fields['name_err']) && empty($fields['groupUser_err']) && 
-          empty($fields['password_err']) && empty($fields['informacion_err'])   ){
+          empty($fields['password_err']) && empty($fields['informacion_err']) ){
            
-            if( $this->connected){
+            if( $this->connected ){
 
                 $name = $fields['name'];
                 $groupUser = $fields['groupUser']; 
@@ -132,9 +132,9 @@ class UsuariosMikrotik extends Controller {
 
        } else {
 
-        $data = array('groupUsers' => $groupUsers, 'fields' => $fields ); // construyo un array con los datos obtenidos
-   
-        $this->view('usuariosMikrotik/agregar', $data);
+            $data = array('groupUsers' => $groupUsers, 'fields' => $fields ); // construyo un array con los datos obtenidos
+    
+            $this->view('usuariosMikrotik/agregar', $data);
 
        }
 
@@ -142,11 +142,108 @@ class UsuariosMikrotik extends Controller {
 
     public function editarPassword(){
 
-        $data =[
-            'posts'=>'hola'
-        ];
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            //saneamos los datos que vienen por POST
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            //array de campos del formulario
+            $fields = [
+                'oldPassword' => trim($_POST['oldPassword']),
+                'newPassword'=>trim($_POST['newPassword']),
+                'oldPassword_err' => '',
+                'newPassword_err' => '',
+                'messageApi'=>''
+
+            ];
+
+            //Sí oldPassword es vacía regresamos mensaje de validación
+            if(empty($fields['oldPassword'])){
+                $fields['oldPassword_err'] = 'Por favor ingrese la contraseña anterior';
+            }
+            //Sí newPassword es vacía regresamos mensaje de validación
+            if(empty($fields['newPassword'])){ 
+                $fields['newPassword_err'] = 'Por favor indique la nueva contraseña';
+            }
+
+            $this->updatePasswordMikrotik($fields);
+            
+        } else {
+
+            //array de campos del formulario
+            $fields = [
+                'oldPassword'=> '' ,
+                'newPassword'=>'',
+                'oldPassword_err' => '',
+                'newPassword_err' => '',
+                'messageApi'=>''
+
+            ];
+
+            $data = array('fields' => $fields); // construyo un array con los datos obtenidos
+
+            $this->view('usuariosMikrotik/editarPassword', $data);
+
+        }        
+    }
+
+    public function updatePasswordMikrotik($fields){
+
+        if(empty($fields['oldPassword_err']) && empty($fields['newPassword_err']) ){
+
+            $oldPassword = $fields['oldPassword'];
+            $newPassword = $fields['newPassword'];
+
+            if( $this->connected ) {
+
+                $this->API->write("/password",false);	
+                $this->API->write("=old-password=".$oldPassword,false);	
+                $this->API->write("=new-password=".$newPassword,false);	
+                $this->API->write("=confirm-new-password=".$newPassword,true);
+                $this->API->read();
+                //actualizo en el archivo conexionRouter.php la nueva contraseña
+                $this->updateDatosConexionRouter($_SESSION['ip'], $_SESSION['usuario'], $newPassword); 
+
+                $fields['messageApi'] = 'Contraseña del Mikrotik actualizado exitosamente.';
+          
+                flashMensaje('messageApi', $fields['messageApi'], 'alert alert-success'); 
+
+                redirect('usuariosMikrotik/editarPassword'); 
+    
+            } else {
+
+                $fields['messageApi'] = 'Falló la actualización de la contraseña del Mikrotik';
+
+                flashMensaje('messageApi', $fields['messageApi'], 'alert alert-danger'); 
+
+                $data = array('fields' => $fields ); // construyo un array con los datos obtenidos
+
+                $this->view('usuariosMikrotik/agregar', $data);
+
+            }
+
+        } else {
+
+            $data = array('fields' => $fields ); // construyo un array con los datos obtenidos
+    
+            $this->view('usuariosMikrotik/editarPassword', $data);
+
+        }
+    }
+
+    public function updateDatosConexionRouter($ip, $username, $newPassword){
         
-        $this->view('usuariosMikrotik/editarPassword', $data);
+        $archivo = 'conexionRouter.php';
+     
+        $manejador = fopen('../app/config/'.$archivo, 'w') or die('No puede abrir el archivo '.$archivo);
+        $codigo = 
+        '<?php 
+            //datos de conexion router
+            define("ROUTER_IP", "'.$ip.'");
+            define("ROUTER_USER", "'.$username.'");
+            define("ROUTER_PASS", "'.$newPassword.'");
+        ';
+        fwrite($manejador, $codigo);
+        fclose($manejador);
     }
 
     public function editarIdentidad(){
@@ -333,5 +430,5 @@ class UsuariosMikrotik extends Controller {
             echo json_encode($respuesta);
         }        
     }
-    
+
 }
