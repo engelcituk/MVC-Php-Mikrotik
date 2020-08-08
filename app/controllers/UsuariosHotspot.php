@@ -465,14 +465,15 @@ class UsuariosHotspot extends Controller {
             $data = json_decode($_SESSION['dataUsers']);
             $this->view('usuariosHotspot/vouchers', $data);
 
-        }else if(isset($_GET['data']) && $_GET['data']){
-            
-            $data = json_decode($_GET['data']);
-            $this->view('usuariosHotspot/vouchers', $data);
-
         }else{
             $this->view('shared/noData');   
         }
+    }
+
+    public function verVouchers(){
+       
+        $this->view('usuariosHotspot/verVouchers');
+
     }
 }
 

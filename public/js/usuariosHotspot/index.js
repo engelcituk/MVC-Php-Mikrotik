@@ -1,5 +1,6 @@
 const token = document.getElementById("tokenCSRF").value; //obtengo el token, que está en campo oculto del modal showUserHotspot
 
+
 let tablaUsers = $('#tablaUsers').DataTable({
     responsive: true,
     //bDestroy: true,
@@ -31,6 +32,7 @@ $(".selectAll").on( "click", function(e) {
         tablaUsers.rows().deselect(); 
     }
 });
+
 function verTickets() {
 
     let users = $.map(tablaUsers.rows('.selected').data(), function (item) {
@@ -38,13 +40,11 @@ function verTickets() {
     });
 
     if(users.length > 0){
-
-        const data = JSON.stringify(users);
-        
-        window.location.href = 'usuarioshotspot/vouchers?data='+data; // redirijo        
-        
+        localStorage.setItem('listaTicketsMK',JSON.stringify(users));        
+        window.location.href = 'usuarioshotspot/vervouchers'; // redirijo        
     } else {
-
+        users = [];
+        localStorage.setItem('listaTicketsMK',JSON.stringify(users));
         showMessageNotify('Debes seleccionar un elemento de la tabla primero', 'danger', 2000); //muestro alerta
 
     }       
