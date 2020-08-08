@@ -37,7 +37,5 @@
             </div>
         </div>
         <?php require APPROOT . '/views/shared/scriptjs.php'; ?> 
-        <script src="<?php echo URLROOT; ?>/js/main.js"></script>
-
     </body>
 </html>

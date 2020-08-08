@@ -93,6 +93,7 @@
             $('.card').removeClass('card-hidden');
           }, 700);
         });
+        localStorage.removeItem('listaTicketsMK');
       </script>
     </body>
 </html>
