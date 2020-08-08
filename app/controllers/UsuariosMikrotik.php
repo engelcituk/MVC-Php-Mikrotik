@@ -560,7 +560,7 @@ class UsuariosMikrotik extends Controller {
                 $codigo = 
                 '<?php 
                     //datos de conexion router
-                    define("ENCABEZADO", "'.$fields["encabezado"].'");
+                    define("ENCABEZADO", "'.strtoupper($fields["encabezado"]).'");
                     define("PIE", "'.$fields["pie"].'");
                 ';
                 fwrite($manejador, $codigo);

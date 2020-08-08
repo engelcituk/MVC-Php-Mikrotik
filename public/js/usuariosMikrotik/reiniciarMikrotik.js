@@ -6,7 +6,7 @@ const urlRoot = document.getElementById("urlRoot").value; //obtengo el token, qu
 function reboot() {
     Swal.fire({
         title: `¿Estás seguro de reiniciar el equipo ${mikrotik}?`,
-        text: "¡No podrás revertir esto!",
+        text: "¡Saldrás de la aplicación!",
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
