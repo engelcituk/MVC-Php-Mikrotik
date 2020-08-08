@@ -116,7 +116,7 @@ class UsuariosMikrotik extends Controller {
           
                 flashMensaje('messageApi', $fields['messageApi'], 'alert alert-success'); 
 
-                redirect('usuariosMikrotik/agregar'); // redirijo a la pagina sin los datos, porque se han guardado, pero se muestra el mensaje flash 
+                redirect('usuariosmikrotik/agregar'); // redirijo a la pagina sin los datos, porque se han guardado, pero se muestra el mensaje flash 
 
             } else {
 
@@ -207,7 +207,7 @@ class UsuariosMikrotik extends Controller {
           
                 flashMensaje('messageApi', $fields['messageApi'], 'alert alert-success'); 
 
-                redirect('usuariosMikrotik/editarPassword'); 
+                redirect('usuariosmikrotik/editarpassword'); 
     
             } else {
 
@@ -277,7 +277,7 @@ class UsuariosMikrotik extends Controller {
           
                     flashMensaje('messageApi', $fields['messageApi'], 'alert alert-success'); 
 
-                    redirect('usuariosMikrotik/editarIdentidad'); 
+                    redirect('usuariosmikrotik/editaridentidad'); 
 
                 } else {
 
@@ -432,7 +432,7 @@ class UsuariosMikrotik extends Controller {
           
                 flashMensaje('messageApi', $fields['messageApi'], 'alert alert-success'); 
 
-                redirect('usuariosMikrotik/editarPerfilMikrotik'); // redirijo a la pagina sin los datos, porque se han guardado, pero se muestra el mensaje flash 
+                redirect('usuariosmikrotik/editarperfilmikrotik'); // redirijo a la pagina sin los datos, porque se han guardado, pero se muestra el mensaje flash 
 
            } else {
 
@@ -527,5 +527,77 @@ class UsuariosMikrotik extends Controller {
             }
             echo json_encode($respuesta);
         }        
+    }
+
+    public function datosTicket(){
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+             //saneamos los datos que vienen por POST
+             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+             //array de campos del formulario
+             $fields = [
+                 'encabezado' => trim($_POST['encabezado']),
+                 'pie'=>trim($_POST['pie']),
+                 'encabezado_err' => '',
+                 'pie_err' => ''
+             ];
+ 
+             //Sí encabezado es vacía regresamos mensaje de validación
+             if(empty($fields['encabezado'])){
+                 $fields['encabezado_err'] = 'Por favor indique un encabezado';
+             }
+             //Sí pie es vacía regresamos mensaje de validación
+             if(empty($fields['pie'])){ 
+                 $fields['pie_err'] = 'Por favor indique el pie de página';
+             }
+
+            if(empty($fields['encabezado_err']) && empty($fields['pie_err']) ){
+
+                $archivo = 'datosTicket.php';
+     
+                $manejador = fopen('../app/config/'.$archivo, 'w') or die('No puede abrir el archivo '.$archivo);
+                $codigo = 
+                '<?php 
+                    //datos de conexion router
+                    define("ENCABEZADO", "'.$fields["encabezado"].'");
+                    define("PIE", "'.$fields["pie"].'");
+                ';
+                fwrite($manejador, $codigo);
+                fclose($manejador);
+
+                $mensaje= 'Los datos se han cambiado exitosamente.';
+          
+                flashMensaje('datosTicket', $mensaje, 'alert alert-success'); 
+
+                redirect('usuariosmikrotik/datosticket'); 
+
+            } else {
+
+                $mensaje= 'Error al cambiar el encabezado y pie para los tickets.';
+
+                flashMensaje('datosTicket', $mensaje, 'alert alert-danger'); 
+
+                $data = array('fields' => $fields ); // construyo un array con los datos obtenidos
+
+                $this->view('usuariosMikrotik/datosTicket', $data);
+            }
+
+        } else {
+            //array de campos del formulario
+            $fields = [
+                'encabezado'=> ENCABEZADO ,
+                'pie'=> PIE,
+                'encabezado_err' => '',
+                'pie_err' => ''
+            ];
+
+            $data = array('fields' => $fields); 
+
+            $this->view('usuariosMikrotik/datosTicket', $data);
+        }
+
+       
+
     }
 }

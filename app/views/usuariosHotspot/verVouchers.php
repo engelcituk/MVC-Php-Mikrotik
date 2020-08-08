@@ -14,6 +14,9 @@
     </style> 
 </head> 
     <body> 
+        <input type="hidden" id="encabezado" value="<?php echo ENCABEZADO;?>">
+        <input type="hidden" id="pie" value="<?php  echo PIE;?>">
+        
         <div id="vouchers">
 
         </div>

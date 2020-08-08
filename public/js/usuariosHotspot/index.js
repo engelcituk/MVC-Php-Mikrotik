@@ -36,7 +36,7 @@ $(".selectAll").on( "click", function(e) {
 function verTickets() {
 
     let users = $.map(tablaUsers.rows('.selected').data(), function (item) {
-        return {'name':item[2], 'password':item[3],'profile':item[5], 'limitUptime':item[5],'comment':item[6]};
+        return {'name':item[2], 'password':item[3], 'limitUptime':item[4],'profile':item[5],'comment':item[6]};
     });
 
     if(users.length > 0){

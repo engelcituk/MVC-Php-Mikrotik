@@ -3,6 +3,7 @@
 // carga de archivo de configuracion 
 require_once 'config/config.php';
 require_once 'config/conexionRouter.php';
+require_once 'config/datosTicket.php';
 
 // carga de archivos helpers
 require_once 'helpers/helper.php';

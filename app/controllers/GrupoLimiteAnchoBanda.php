@@ -108,7 +108,7 @@ class GrupoLimiteAnchoBanda extends Controller {
 
                 $data = array('fields' => $fields ); // construyo un array con los datos obtenidos
 
-                redirect('grupoLimiteAnchoBanda/generador'); 
+                redirect('grupolimiteanchobanda/generador'); 
 
             } else {
 

@@ -95,7 +95,6 @@ class UsuariosHotspot extends Controller {
                 $fields['precio_err'] = 'Por favor ingrese el precio para los vouchers';
             }
             
-
             $this->saveUsersHotspot($fields, $anchosBanda);
 
         }else{
@@ -176,7 +175,6 @@ class UsuariosHotspot extends Controller {
              if(empty($fields['informacion'])){ 
                 $fields['informacion_err'] = 'Por favor ingrese el precio';
             }
-
             //guardo los datos de user hotspot
             $this->saveUserHotspot($fields, $anchosBanda);
 
@@ -245,7 +243,7 @@ class UsuariosHotspot extends Controller {
                 
                 $_SESSION['dataUsers'] = json_encode($dataUsers);
 
-                redirect('usuariosHotspot/vouchers'); // redirijo a la pagina con los datos para ver los vouchers de users
+                redirect('usuarioshotspot/vouchers'); // redirijo a la pagina con los datos para ver los vouchers de users
 
             } else {
                 //si hubo falla al conectarse al mikrotik
@@ -295,7 +293,7 @@ class UsuariosHotspot extends Controller {
           
              flashMensaje('messageApi', $fields['messageApi'], 'alert alert-success'); 
 
-             redirect('usuariosHotspot/agregar'); // redirijo a la pagina sin los datos, porque se han guardado, pero se muestra el mensaje flash               
+             redirect('usuarioshotspot/agregar'); // redirijo a la pagina sin los datos, porque se han guardado, pero se muestra el mensaje flash               
                           
          } else {
 
@@ -460,12 +458,13 @@ class UsuariosHotspot extends Controller {
     }
 
     public function vouchers(){
+
         if (isset($_SESSION['dataUsers']) && $_SESSION['dataUsers']){
 
             $data = json_decode($_SESSION['dataUsers']);
             $this->view('usuariosHotspot/vouchers', $data);
 
-        }else{
+        } else {
             $this->view('shared/noData');   
         }
     }
@@ -475,5 +474,6 @@ class UsuariosHotspot extends Controller {
         $this->view('usuariosHotspot/verVouchers');
 
     }
+
 }
 

@@ -101,14 +101,14 @@
               </ul>
             </div>
           </li>
-          <li class="nav-item <?php echo activeMenuArray([ROOTFOLDER.'usuariosmikrotik/editarperfilmikrotik',ROOTFOLDER.'usuariosmikrotik',ROOTFOLDER.'usuariosmikrotik/editarpassword',ROOTFOLDER.'usuariosmikrotik/editaridentidad',ROOTFOLDER.'usuariosmikrotik/reiniciarmikrotik']); ?>">
+          <li class="nav-item <?php echo activeMenuArray([ROOTFOLDER.'usuariosmikrotik/editarperfilmikrotik',ROOTFOLDER.'usuariosmikrotik',ROOTFOLDER.'usuariosmikrotik/editarpassword',ROOTFOLDER.'usuariosmikrotik/editaridentidad',ROOTFOLDER.'usuariosmikrotik/reiniciarmikrotik',ROOTFOLDER.'usuariosmikrotik/datosticket']); ?>">
             <a class="nav-link" data-toggle="collapse" href="#formsExamples">
             <i class="fas fa-bars"></i>
               <p> Extras mikrotik
                 <b class="caret"></b>
               </p>
             </a>
-            <div class="collapse <?php echo setCollapseShowArray([ROOTFOLDER.'usuariosmikrotik/editarperfilmikrotik',ROOTFOLDER.'usuariosmikrotik',ROOTFOLDER.'usuariosmikrotik/editarpassword',ROOTFOLDER.'usuariosmikrotik/agregar',ROOTFOLDER.'usuariosmikrotik/editaridentidad',ROOTFOLDER.'usuariosmikrotik/reiniciarmikrotik']); ?> " id="formsExamples">
+            <div class="collapse <?php echo setCollapseShowArray([ROOTFOLDER.'usuariosmikrotik/editarperfilmikrotik',ROOTFOLDER.'usuariosmikrotik',ROOTFOLDER.'usuariosmikrotik/editarpassword',ROOTFOLDER.'usuariosmikrotik/agregar',ROOTFOLDER.'usuariosmikrotik/editaridentidad',ROOTFOLDER.'usuariosmikrotik/reiniciarmikrotik',ROOTFOLDER.'usuariosmikrotik/datosticket']); ?> " id="formsExamples">
               <ul class="nav">
                 <li class="nav-item <?php echo activeMenu(ROOTFOLDER.'usuariosmikrotik'); ?>">
                   <a class="nav-link" href="<?php echo URLROOT; ?>/usuariosmikrotik">
@@ -141,12 +141,20 @@
                   </a>
                 </li>
                 
+                <li class="nav-item <?php echo activeMenu(ROOTFOLDER.'usuariosmikrotik/datosticket'); ?>">
+                <a class="nav-link" href="<?php echo URLROOT; ?>/usuariosmikrotik/datosticket">
+                    <span class="sidebar-mini"> <i class="fas fa-ticket-alt"></i></span>
+                    <span class="sidebar-normal"> Datos Ticket </span>
+                  </a>
+                </li>
+
                 <li class="nav-item <?php echo activeMenu(ROOTFOLDER.'usuariosmikrotik/reiniciarmikrotik'); ?>">
                   <a class="nav-link" href="<?php echo URLROOT; ?>/usuariosmikrotik/reiniciarmikrotik">
                     <span class="sidebar-mini"> <i class="fas fa-power-off"></i> </span>
                     <span class="sidebar-normal"> Reiniciar Mikrotik </span>
                   </a>
                 </li>
+
               </ul>
             </div>
           </li>

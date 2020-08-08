@@ -22,7 +22,7 @@
                 <table style="display: inline-block; width: 250px; border: 1px solid #121DAE; line-height: 110%; font-family: arial; font-size: 12px; margin: 1px;">     
                 <tbody>         
                     <tr>             
-                        <td style="text-align: center; color: #2F38F4; font-size: 13px; border-bottom: 1px #ccc solid;"><b>ABARROTES WILMA</b></td>        
+                        <td style="text-align: center; color: #2F38F4; font-size: 13px; border-bottom: 1px #ccc solid;"><b>'.ENCABEZADO.'</b></td>        
                     </tr>          
                     <tr>              
                         <td>                   
@@ -76,7 +76,7 @@
                         </td>              
                     </tr>              
                     <tr>                   
-                        <td style="text-align: center; font-size:11px;">Mas tickets en Abarrotes Wilma</td>             
+                        <td style="text-align: center; font-size:11px;">'.PIE.'</td>             
                         </tr>      
                     </tbody>     
             </table>
