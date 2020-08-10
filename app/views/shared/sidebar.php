@@ -78,7 +78,7 @@
           <li class="nav-item <?php echo activeMenuArray([ROOTFOLDER.'grupolimiteanchobanda',ROOTFOLDER.'grupolimiteanchobanda/generador']); ?>">
             <a class="nav-link" data-toggle="collapse" href="#componentsExamples">
             <i class="fas fa-wifi"></i>
-              <p> Grupo límite
+              <p> Perfiles
                 <b class="caret"></b>
               </p>
             </a>
@@ -113,7 +113,7 @@
                 <li class="nav-item <?php echo activeMenu(ROOTFOLDER.'usuariosmikrotik'); ?>">
                   <a class="nav-link" href="<?php echo URLROOT; ?>/usuariosmikrotik">
                     <span class="sidebar-mini"> <i class="fas fa-users"></i> </span>
-                    <span class="sidebar-normal"> Usuarios Mikrotik </span>
+                    <span class="sidebar-normal"> Usuarios admin </span>
                   </a>
                 </li>
                 <li class="nav-item <?php echo activeMenu(ROOTFOLDER.'usuariosmikrotik/agregar'); ?>">

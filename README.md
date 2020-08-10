@@ -6,9 +6,7 @@ Aplicación de gestión de usuarios hotspot que utiliza la API Mikrotik PHP. Tie
 1. Puede crear y generar usuarios hotspot a través de la interfaz de la aplicación
 2. Puede administrar el ancho de banda del usuario a través de la interfaz de la aplicación
 3. Puede configurar el tiempo de acceso a la red de hotspot a través de la interfaz de la aplicación
-4. Imprima el usuario que se ha generado en un archivo * .pdf
-5. exportar el usuario que se ha generado en un archivo de Excel (*. Xls)
-6. Realizado bajo MVC, POO
+5. Realizado bajo MVC, POO
 
 
 

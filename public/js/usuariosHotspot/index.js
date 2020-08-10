@@ -24,6 +24,7 @@ $('#tablaUsers tbody').on('click', 'tr', function () {
     $(this).toggleClass('selected');
 });
 
+//tablaUsers.rows({search: 'applied'}).select();
 //para seleccionar todos los rows del datatable
 $(".selectAll").on( "click", function(e) {
     if ($(this).is( ":checked" )) {

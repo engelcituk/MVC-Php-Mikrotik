@@ -26,6 +26,5 @@
 </html>
 <p class="noprint" style="font-size: 10px">
     <a href="<?php echo URLROOT; ?>/usuarioshotspot" class="btn btn-warning mr-auto" > <i class="fas fa-arrow-left"></i> Volver</a>
-  ................ page break ................
 </p>
 <p class="pagebreak">&nbsp;</p>
