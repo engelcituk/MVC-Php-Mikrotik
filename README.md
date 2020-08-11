@@ -70,9 +70,4 @@ Aplicación de gestión de usuarios hotspot que utiliza la API Mikrotik PHP. Tie
 
 8. Por último y no menos importante, se requiere un router mikrotik con el sistema RouterOS, porque se ocupará la API oficla para PHP para hacer cosas interesantes con este. Para este desarrollo se probó con un equipo similar al de la imagen.
 
-~~~
-    <img src="https://i.mt.lv/cdn/rb_images/1284_hi_res.png"
-     alt="Markdown Monster icon"
-     style="float: left; margin-right: 10px;" />
-~~~
-
+[MikrotikRouter]: https://i.mt.lv/cdn/rb_images/1284_hi_res.png "Mikrotik MikroTik Routers and Wireless"
