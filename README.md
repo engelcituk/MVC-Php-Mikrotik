@@ -1,4 +1,4 @@
-# mikrotik-php-api-hotspot-user-generator
+# MikrotikPHP apiHotspotUserGenerator
 Generador de usuario hotspot con API Mikrotik PHP 
 
 Aplicación de gestión de usuarios hotspot que utiliza la API Mikrotik PHP. Tiene las siguientes capacidades:
@@ -20,7 +20,7 @@ Aplicación de gestión de usuarios hotspot que utiliza la API Mikrotik PHP. Tie
 <IfModule mod_rewrite.c>
     Options -Multiviews
     RewriteEngine On
-    RewriteBase /base/public/
+    RewriteBase **/base/public/**
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
@@ -28,11 +28,12 @@ Aplicación de gestión de usuarios hotspot que utiliza la API Mikrotik PHP. Tie
 ~~~
 
 5. Le pones el nombre el nombre que le hayas puesto **mikrovouchers** , quedando como: ***RewriteBase /mikrovouchers/public/***
+
 ~~~
 <IfModule mod_rewrite.c>
     Options -Multiviews
     RewriteEngine On
-    RewriteBase /mikrovouchers/public/
+    RewriteBase **/mikrovouchers/public/**
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
