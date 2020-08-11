@@ -68,6 +68,6 @@ Aplicación de gestión de usuarios hotspot que utiliza la API Mikrotik PHP. Tie
     define('ROOTFOLDER','/mikrovouchers/');
 ~~~
 
-8. Por último y no menos importante, se requiere un router mikrotik con el sistema RouterOS, porque se ocupará la API oficla para PHP para hacer cosas interesantes con este. Para este desarrollo se probó con un equipo similar al de la imagen.
+8. Por último y no menos importante, se requiere un router Mikrotik con el sistema RouterOS, porque se ocupará la API oficial para PHP para hacer cosas interesantes con este. Para este desarrollo se probó con un equipo similar al de la imagen.
 
-[MikrotikRouter]: https://i.mt.lv/cdn/rb_images/1284_hi_res.png "Mikrotik MikroTik Routers and Wireless"
+![MikrotikRouter](https://i.mt.lv/cdn/rb_images/1284_hi_res.png)
