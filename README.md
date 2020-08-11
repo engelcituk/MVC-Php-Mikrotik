@@ -54,7 +54,7 @@ Aplicación de gestión de usuarios hotspot que utiliza la API Mikrotik PHP. Tie
     define('ROOTFOLDER','/base/');
 ~~~
 
-7. De esas constantes modificas su valor la constante **URLROOT**, y **ROOTFOLDER** por el nombre que tu le hayas puesto a la carpeta en **htdocs**. Donde **URLROOT** quedaría como **http://localhost/mikrovouchers** o **http://localhost:3030/mikrovouchers** si tu entorno de prueba de servidor requiere un puerto en especifico. La constante **ROOTFOLDER** solo tendría el nombre de la carpeta del proyecto **/mikrovouchers/**.
+7. De esas constantes modificas su valor la constante **URLROOT**, y **ROOTFOLDER** por el nombre que tu le hayas puesto a la carpeta en **htdocs**. Donde **URLROOT** quedaría como **http://localhost/mikrovouchers** o **http://localhost:3030/mikrovouchers** si tu entorno de prueba de servidor requiere un puerto en especifico. La constante **ROOTFOLDER** solo tendría el nombre de la carpeta del proyecto **/mikrovouchers/**. Quedando así como se muestra:
 
 ~~~
     <?php 
@@ -71,3 +71,5 @@ Aplicación de gestión de usuarios hotspot que utiliza la API Mikrotik PHP. Tie
 8. Por último y no menos importante, se requiere un router Mikrotik con el sistema RouterOS, porque se ocupará la API oficial para PHP para hacer cosas interesantes con este. Para este desarrollo se probó con un equipo similar al de la imagen.
 
 ![MikrotikRouter](https://i.mt.lv/cdn/rb_images/1284_hi_res.png)
+
+Es requerido un router mikrotik, en teoria debe funcionar para todos los modelos, dado que todos son gobernados por RouterOS. Sí no se cuenta con un equipo real, es posible (creo yo) con GNS3 emular un router mikrotik.
