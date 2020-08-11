@@ -27,7 +27,7 @@ Aplicación de gestión de usuarios hotspot que utiliza la API Mikrotik PHP. Tie
 </IfModule>
 ~~~
 
-5. Como ejemplo si le pones de nombre **mikrovouchers** a la carpeta, **RewriteBase** queda como  ***RewriteBase /mikrovouchers/public/***
+5. Sí en htdocs le pones de nombre **mikrovouchers** a la carpeta del proyecto, **RewriteBase** queda como  ***RewriteBase /mikrovouchers/public/***
 
 ~~~
 <IfModule mod_rewrite.c>
@@ -54,7 +54,7 @@ Aplicación de gestión de usuarios hotspot que utiliza la API Mikrotik PHP. Tie
     define('ROOTFOLDER','/base/');
 ~~~
 
-7. De esas constantes modificas su valor la constante **URLROOT**, y **ROOTFOLDER** por el nombre que tu le hayas puesto a la carpeta en htdocs. Donde **URLROOT** quedaría como **define('URLROOT', 'http://localhost/mikrovouchers');** o **define('URLROOT', 'http://localhost:3030/mikrovouchers');** si tu entorno de prueba de servidor requiere el puerto. La constante **ROOTFOLDER** solo tendría el nombre  de la carpeta del proyecto en htdocs **define('ROOTFOLDER','/mikrovouchers/');**.
+7. De esas constantes modificas su valor la constante **URLROOT**, y **ROOTFOLDER** por el nombre que tu le hayas puesto a la carpeta en **htdocs**. Donde **URLROOT** quedaría como **http://localhost/mikrovouchers** o **http://localhost:3030/mikrovouchers** si tu entorno de prueba de servidor requiere un puerto en especifico. La constante **ROOTFOLDER** solo tendría el nombre de la carpeta del proyecto **/mikrovouchers/**.
 
 ~~~
     <?php 
@@ -67,3 +67,12 @@ Aplicación de gestión de usuarios hotspot que utiliza la API Mikrotik PHP. Tie
     define('SITENAME', 'MikrotikPHP');
     define('ROOTFOLDER','/mikrovouchers/');
 ~~~
+
+8. Por último y no menos importante, se requiere un router mikrotik con el sistema RouterOS, porque se ocupará la API oficla para PHP para hacer cosas interesantes con este. Para este desarrollo se probó con un equipo similar al de la imagen.
+
+~~~
+    <img src="https://i.mt.lv/cdn/rb_images/1284_hi_res.png"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" />
+~~~
+
