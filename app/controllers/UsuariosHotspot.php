@@ -5,19 +5,17 @@ class UsuariosHotspot extends Controller {
     public $API;
     public $connected;
 
-    public function __construct()
-    {       
-        $this->API = $this->routerosAPI(); //instancia de routeros
-
-        $this->connected = connected($this->API); // llamo al helper connected y le paso la instancia de RouterOS
-        
-        // unset($_SESSION['data']); // sesion data se destruye, guarda el array
+    public function __construct(){
 
         if (!estaLogueado()) {
             redirect('paginas/login');
         }
-        
+
+        $this->API = $this->routerosAPI(); //instancia de routeros
+
+        $this->connected = connected($this->API); // llamo al helper connected y le paso la instancia de RouterOS
     }
+
     public function index(){
         //obtengo el listado de usuarios
         $users = $this->getUsersHotspot();
@@ -45,7 +43,6 @@ class UsuariosHotspot extends Controller {
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             //saneamos los datos que vienen por POST
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
             //array de campos del formulario
             $fields = [
                 'longitudUser'=> trim($_POST['longitudUser']) ,
@@ -216,7 +213,7 @@ class UsuariosHotspot extends Controller {
                 
                 $profile = $fields['grupoLimiteAnchosBanda'];
                 $tiempo = tranformarTiempo($fields['limiteTiempo'], $fields['tipoTiempos']); //helper
-                $precio = $fields['precio'];
+                $precio = $fields['precio'];//información
 
                 for ( $i=0; $i < $fields['cantidadUsers']; $i++) { 
 
@@ -231,7 +228,7 @@ class UsuariosHotspot extends Controller {
                     $this->API->write("=comment=".$precio,true);	
                     $this->API->read();
 
-	                $dataUsers[]= ['name'=>$username,'password'=>$password, 'profile'=>$profile,'limitUptime'=>$tiempo, 'comment'=>$precio];
+	                $dataUsers[] = ['name'=>$username,'password'=>$password, 'profile'=>$profile,'limitUptime'=>$tiempo, 'comment'=>$precio];
 
                 }
                 
@@ -427,7 +424,6 @@ class UsuariosHotspot extends Controller {
         } else {
             $users = [];
         } 
-
         return $users;
     }
 
@@ -452,9 +448,7 @@ class UsuariosHotspot extends Controller {
         }else {
             $anchosBanda = [];
         }
-
         return $anchosBanda;
-        
     }
 
     public function vouchers(){

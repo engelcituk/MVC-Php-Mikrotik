@@ -43,10 +43,10 @@ class Core {
      public function getUrl(){         
          if(isset($_GET['url'])){
              $url = rtrim($_GET['url'],'/'); // elimino los diagonales al final
-             $url = filter_var($url, FILTER_SANITIZE_URL);// sanitizo la url
+             $url = filter_var($url, FILTER_SANITIZE_URL);// saneo la url
              $url = explode('/', $url); // divide la cadena en partes (creando un array)
              return $url; // regreso url en un array
-         }else  {
+         } else  {
              $url[0]='Paginas';
             return $url;
          }

@@ -47,7 +47,7 @@
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label for="GLAB" class="form-label"> Grupo Limitación Ancho Banda *</label>
+                                                        <label for="GLAB" class="form-label"> Perfil *</label>
                                                         <select class="custom-select custom-select-sm" name="grupoLimiteAnchosBanda">
                                                             <?php $selected = ($data['fields']['grupoLimiteAnchosBanda'] == '') ? 'selected': '';?>
                                                             <option value='' <?php echo $selected; ?> >Elija</option>

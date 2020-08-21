@@ -18,7 +18,8 @@ let tablaUsers = $('#tablaUsers').DataTable({
     "search": "Buscar:",
     "zeroRecords": "Sin resultados encontrados"
     },
-})
+});
+
 //para marcar como seleccionado una fila
 $('#tablaUsers tbody').on('click', 'tr', function () {
     $(this).toggleClass('selected');
@@ -183,7 +184,7 @@ function resetCounterUserHotspot(id, username) {
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         cancelButtonText: '¡Cancelar!',
-        confirmButtonText: 'Sí, borrarlo!'
+        confirmButtonText: 'Sí, resetear!'
         }).then((result) => {
         if (result.value) {
             $.ajax({

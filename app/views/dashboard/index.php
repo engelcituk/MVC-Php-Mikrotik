@@ -15,11 +15,8 @@
                         <div class="col-md-9">
                             <div class="card ">
                             <div class="card-header card-header-success card-header-icon">
-                                
                                 <h4 class="card-title">Pagina de inicio <?php //echo $data['info']; ?> </h4>
-                                <!-- <button class="btn btn-primary" onclick="miclick()">click</button> -->
                                 <img class="img-fluid" src="<?php echo URLROOT; ?>/img/mikrotik-logo.jpg" height="300px" alt="logo mikrotik"/>
-                                
                             </div>
                             <div class="card-body ">
                                 <div class="row">

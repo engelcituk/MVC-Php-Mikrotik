@@ -2,11 +2,11 @@
     <body class="">
         <div class="wrapper ">
             <!-- sidebar -->
-            <?php require APPROOT . '/views/shared/sidebar.php'; ?> 
+            <?php require APPROOT.'/views/shared/sidebar.php'; ?> 
             <!-- sidebar -->
             <div class="main-panel">
             <!-- Navbar -->
-                <?php require APPROOT . '/views/shared/navbar.php'; ?> 
+                <?php require APPROOT.'/views/shared/navbar.php'; ?> 
             <!-- End Navbar -->
             <div class="content">
                 <div class="content">
@@ -36,11 +36,11 @@
                 </div>
             </div>
             <!-- footer -->
-            <?php require APPROOT . '/views/shared/footer.php'; ?> 
+            <?php require APPROOT.'/views/shared/footer.php'; ?> 
             <!-- footer -->
             </div>
         </div>
-        <?php require APPROOT . '/views/shared/scriptjs.php'; ?> 
+        <?php require APPROOT.'/views/shared/scriptjs.php'; ?> 
         <script src="<?php echo URLROOT; ?>/js/usuariosHotspot/generador.js"></script> <!-- Contiene el script para aplicar validaciones -->
     </body>
 </html>

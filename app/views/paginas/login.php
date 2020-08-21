@@ -1,4 +1,4 @@
-<?php require APPROOT . '/views/shared/head.php'; ?>
+<?php require APPROOT.'/views/shared/head.php'; ?>
 <body class="off-canvas-sidebar">
 
   <!-- Navbar -->
@@ -13,7 +13,6 @@
         <span class="navbar-toggler-icon icon-bar"></span>
         <span class="navbar-toggler-icon icon-bar"></span>
       </button>
-      
     </div>
   </nav>
   <!-- End Navbar -->
@@ -40,8 +39,8 @@
                       </div>
                       
                       <input type="text" class="form-control <?php echo (!empty($data['ip_err'])) ? 'is-invalid':''; ?>" name="ip" placeholder="Dirección ip" value="<?php echo $data['ip'];?>" >
-                
-                        <lavel class="invalid-feedback"><?php echo $data['ip_err'];?></lavel>
+                      <span class="invalid-feedback"><?php echo $data['ip_err'];?></span>
+
                     </div>
                   </span>
                   <span class="bmd-form-group">
@@ -80,11 +79,11 @@
         </div>
       </div>
     <!-- End Navbar -->
-    <?php require APPROOT . '/views/shared/footerLogin.php'; ?>
+    <?php require APPROOT.'/views/shared/footer.php'; ?>
     <!-- End Navbar --> 
     </div>
   </div>
-    <?php require APPROOT . '/views/shared/scriptjs.php'; ?>
+    <?php require APPROOT.'/views/shared/scriptjs.php'; ?>
     <script>
         $(document).ready(function() {
           md.checkFullPageBackgroundImage();
@@ -97,3 +96,4 @@
       </script>
     </body>
 </html>
+

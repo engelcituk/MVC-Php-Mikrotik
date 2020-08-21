@@ -1,6 +1,5 @@
 <footer class="footer">
-    <div class="container-fluid">
-        
+    <div class="container">
         <div class="copyright float-right">
         &copy;
         <script>

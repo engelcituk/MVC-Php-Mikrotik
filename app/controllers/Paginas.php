@@ -3,8 +3,8 @@
 class Paginas extends Controller {
 
     public $API;
-    public function __construct()
-    {
+
+    public function __construct(){
         $this->API = $this->routerosAPI(); 
 
     }
@@ -15,21 +15,11 @@ class Paginas extends Controller {
             redirect('dashboard');
         }
 
-        $data = [
-            'ip'=> '' ,
-            'username' => '',
-            'password' => '',
-            'ip_err' => '',
-            'username_err' => '',
-            'messageApi'=>''
-        ];
-        $this->view('paginas/login', $data);
-
-
+        $this->view('paginas/login');
     }
 
-    public function login()
-    {
+    public function login(){
+
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             //saneamos los datos que vienen por POST
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -56,7 +46,7 @@ class Paginas extends Controller {
                 $conectado = $this->conectar($data); //verifico si conecta con los datos al mikrotik
                 if($conectado){ //si se conecta, se crea las variables de sesion y redirijo al dashboard
                     $this->createUserSession($data);
-                    $this->datosConexionRouter($data);//se escribe en el archivo de configuración los datos de acceso al router
+                    $this->writeInfoConexionRouter($data);//se escribe en el archivo de configuración los datos de acceso al router
                     redirect('dashboard');                
                 }else{
                     $data['messageApi'] = '¡La conexión al Mikrotik FALLÓ! Verifique la conexión con el enrutador o el nombre de usuario/contraseña ¡Quizás no sean correctos!';
@@ -83,16 +73,14 @@ class Paginas extends Controller {
         }      
     }
 
-    public function conectar($data)
-    {
+    public function conectar($data){
         return  $this->API->connect($data['ip'],$data['username'],$data['password']); //verifico si se conecta, me regresa un booleano
         
     }
     public function createUserSession($data){
         $_SESSION['ip'] = $data['ip'];
         $_SESSION['usuario'] = $data['username'];
-        $_SESSION['tokencsrf'] = csrf_token(); //token generado gracias al helper
-        redirect('dashboard');        
+        $_SESSION['tokencsrf'] = csrf_token(); //token generado gracias al helper       
     }
     public function logout(){
         //elimino las variables de sesion 
@@ -107,7 +95,7 @@ class Paginas extends Controller {
         redirect('paginas/login'); //redirijo la raiz
     }
 
-    public function datosConexionRouter($data){
+    public function writeInfoConexionRouter($data){
         
         $archivo = 'conexionRouter.php';
 

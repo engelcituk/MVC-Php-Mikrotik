@@ -385,10 +385,5 @@ class RouterosAPI
         }
         return $this->read();
     }
-    
-    function hola()
-    {
-        return 'hola mundo';
-    }
 }
 ?>

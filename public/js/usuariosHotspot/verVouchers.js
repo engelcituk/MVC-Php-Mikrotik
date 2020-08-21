@@ -52,7 +52,7 @@ function showVouchers() {
                                             <tr>                        
                                                 <td> ${limitUptime}</td>                             
                                                 <td></td>                             
-                                                <td>$ ${comment}</td>
+                                                <td>$${comment}</td>
                                             </tr>                     
                                     </tbody>                   
                                 </table>                

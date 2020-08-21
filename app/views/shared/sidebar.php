@@ -108,7 +108,7 @@
                 <b class="caret"></b>
               </p>
             </a>
-            <div class="collapse <?php echo setCollapseShowArray([ROOTFOLDER.'usuariosmikrotik/editarperfilmikrotik',ROOTFOLDER.'usuariosmikrotik',ROOTFOLDER.'usuariosmikrotik/editarpassword',ROOTFOLDER.'usuariosmikrotik/agregar',ROOTFOLDER.'usuariosmikrotik/editaridentidad',ROOTFOLDER.'usuariosmikrotik/reiniciarmikrotik',ROOTFOLDER.'usuariosmikrotik/datosticket']); ?> " id="formsExamples">
+            <div class="collapse <?php echo setCollapseShowArray([ROOTFOLDER.'usuariosmikrotik/editarperfilmikrotik',ROOTFOLDER.'usuariosmikrotik',ROOTFOLDER.'usuariosmikrotik/editarpassword',ROOTFOLDER.'usuariosmikrotik/agregar',ROOTFOLDER.'usuariosmikrotik/editaridentidad',ROOTFOLDER.'usuariosmikrotik/reiniciarmikrotik',ROOTFOLDER.'usuariosmikrotik/datosticket']); ?>" id="formsExamples">
               <ul class="nav">
                 <li class="nav-item <?php echo activeMenu(ROOTFOLDER.'usuariosmikrotik'); ?>">
                   <a class="nav-link" href="<?php echo URLROOT; ?>/usuariosmikrotik">

@@ -54,7 +54,7 @@
                                         <tr>                        
                                             <td> '.$item->limitUptime.'</td>                             
                                             <td></td>                             
-                                            <td>$ '.$item->comment.'</td>            </tr>                     
+                                            <td>$'.$item->comment.'</td>            </tr>                     
                                 </tbody>                   
                             </table>                
                         </td>              

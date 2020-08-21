@@ -2,15 +2,9 @@
 
 class Dashboard extends Controller {
     
-    public $ok;
-    public $mensaje;
-    public $objeto;
-    public $API;
 
-    public function __construct()
-    {   
-        //$this->API = $this->routerosAPI(); 
-
+    public function __construct(){   
+        
         if (!estaLogueado()) {
             redirect('paginas/login');
         }
@@ -22,4 +16,3 @@ class Dashboard extends Controller {
     }
 
 }
-
