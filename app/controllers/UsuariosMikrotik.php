@@ -15,6 +15,7 @@ class UsuariosMikrotik extends Controller {
             redirect('paginas/login');
         }
     }
+
     public function index(){
 
         //obtengo el listado de usuarios
@@ -153,9 +154,7 @@ class UsuariosMikrotik extends Controller {
                 'oldPassword_err' => '',
                 'newPassword_err' => '',
                 'messageApi'=>''
-
             ];
-
             //Sí oldPassword es vacía regresamos mensaje de validación
             if(empty($fields['oldPassword'])){
                 $fields['oldPassword_err'] = 'Por favor ingrese la contraseña anterior';
@@ -334,7 +333,7 @@ class UsuariosMikrotik extends Controller {
     
                 } else {
     
-                    $respuesta = array ('ok' => false, 'mensaje' => 'No se ha podido reinicio el equipo');
+                    $respuesta = array ('ok' => false, 'mensaje' => 'No se ha podido reiniciar el equipo');
     
                 }
                 echo json_encode($respuesta);
@@ -345,16 +344,14 @@ class UsuariosMikrotik extends Controller {
             
             $this->view('usuariosMikrotik/reiniciarMikrotik');             
         }
-
         
     }
 
     public function editarPerfilMikrotik(){
-        //obtengo el listado de usuarios
+        //obtengo el listado de grupos
         $groupUsers = $this->getUserGroups();
 
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
-
             //saneamos los datos que vienen por POST
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
@@ -368,9 +365,7 @@ class UsuariosMikrotik extends Controller {
                 'groupUser_err' => '',
                 'informacion_err' => '',
                 'messageApi'=>''
-
             ];
-
             //Sí name es vacía regresamos mensaje de validación
             if(empty($fields['name'])){
                 $fields['name_err'] = 'Por favor ingrese el nombre de usuario';
@@ -379,12 +374,6 @@ class UsuariosMikrotik extends Controller {
             if(empty($fields['groupUser'])){ 
                 $fields['groupUser_err'] = 'Por favor seleccione un elemento de la lista';
             }
-
-            //Sí password es vacía regresamos mensaje de validación
-            if(empty($fields['password'])){ 
-                $fields['password_err'] = 'Por favor ingrese la contraseña para el usuario';
-            }
-
             //Sí informacion es vacía regresamos mensaje de validación
             if(empty($fields['informacion'])){ 
                 $fields['informacion_err'] = 'Por favor ingrese la información';
@@ -559,7 +548,7 @@ class UsuariosMikrotik extends Controller {
                 $manejador = fopen('../app/config/'.$archivo, 'w') or die('No puede abrir el archivo '.$archivo);
                 $codigo = 
                 '<?php 
-                    //datos de conexion router
+                    //datos para el ticket
                     define("ENCABEZADO", "'.strtoupper($fields["encabezado"]).'");
                     define("PIE", "'.$fields["pie"].'");
                 ';

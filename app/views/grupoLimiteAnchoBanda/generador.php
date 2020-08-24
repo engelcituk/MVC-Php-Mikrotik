@@ -60,7 +60,6 @@
                                                     <span class="error"><?php echo $data['fields']['unidadLimit_err'];?></span>
                                                 </div>
     
-                                                
                                                 <button class="btn btn-primary"> <i class="fas fa-save"></i> Guardar</button>
                                             </form>
                                         </div>

@@ -146,6 +146,7 @@ class GrupoLimiteAnchoBanda extends Controller {
 
         return $usersProfile;
     }
+    
     public function getInfoHotspotUserProfile(){
         //si idProfile está definida y se está recibiendo por post
         if (isset($_POST['idProfile']) && $_POST['idProfile'] && isset($_POST['tokenCsrf']) && $_POST['tokenCsrf']) {

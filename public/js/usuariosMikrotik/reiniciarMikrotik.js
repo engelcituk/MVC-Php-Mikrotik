@@ -1,6 +1,6 @@
-const token = document.getElementById("tokenCSRF").value; //obtengo el token, que está en campo oculto del modal showUserHotspot
-const mikrotik = document.getElementById("mikrotik").value; //obtengo el token, que está en campo oculto del modal showUserHotspot
-const urlRoot = document.getElementById("urlRoot").value; //obtengo el token, que está en campo oculto del modal showUserHotspot
+const token = document.getElementById("tokenCSRF").value; //obtengo el token, que está en campo oculto
+const mikrotik = document.getElementById("mikrotik").value; //obtengo el mikrotik, que está en campo oculto
+const urlRoot = document.getElementById("urlRoot").value; //obtengo el urlRoot, que está en campo oculto
   
 
 function reboot() {
@@ -25,12 +25,10 @@ function reboot() {
                 success: function(respuesta) { //respuesta es un json
                     ok = respuesta.ok;
                     if(ok){
-
                         mensaje = respuesta.mensaje;
                         showMessageNotify(mensaje, 'success', 2000); //muestro alerta
-
                         setTimeout(() => {
-                            document.location.href=urlRoot;
+                            document.location.href = urlRoot;
                         }, 2500);
                        
                     }              

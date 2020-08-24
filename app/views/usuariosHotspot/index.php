@@ -62,7 +62,7 @@
                                                 </thead>
                                                 <tbody>
                                                     <?php 
-                                                        if(count($data)>0){ //si los datos son mayores a cero
+                                                        if(count($data['users'])>0){ //si los datos son mayores a cero
                                                             $contador = 1;
                                                             foreach ($data['users'] as  $item) {
                                                                 $id = "'".$item[".id"]."'";// pongo el id entre comillas

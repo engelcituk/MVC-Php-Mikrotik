@@ -28,7 +28,7 @@
             </div> 
 
             <div class="form-group">
-              <label for="GLAB" class="form-label"> Grupo Limitación Ancho Banda *</label>
+              <label for="GLAB" class="form-label"> Perfiles*</label>
               <select class="custom-select custom-select-sm" id="grupoLimiteAnchosBanda" onchange="activeButton()">
                 <option value=''>Elija</option>
                 <?php 

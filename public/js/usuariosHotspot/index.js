@@ -20,10 +20,10 @@ let tablaUsers = $('#tablaUsers').DataTable({
     },
 });
 
-//para marcar como seleccionado una fila
-$('#tablaUsers tbody').on('click', 'tr', function () {
-    $(this).toggleClass('selected');
-});
+    //para marcar como seleccionado una fila
+    $('#tablaUsers tbody').on('click', 'tr', function () {
+        $(this).toggleClass('selected');
+    });
 
 //tablaUsers.rows({search: 'applied'}).select();
 //para seleccionar todos los rows del datatable
@@ -196,7 +196,14 @@ function resetCounterUserHotspot(id, username) {
                     tokenCsrf: token
                 },
                 success: function(respuesta) { //respuesta es un json
-                    console.log(respuesta);               
+                    ok = respuesta.ok;
+                    if(ok){
+                        mensaje = respuesta.mensaje+': '+username;
+                        showMessageNotify(mensaje, 'success', 2000); //muestro alerta
+                        setTimeout(() => {
+                            location.reload();
+                        }, 2500);
+                    }              
                 },
                 error: function(respuesta) {
                     console.log('error')

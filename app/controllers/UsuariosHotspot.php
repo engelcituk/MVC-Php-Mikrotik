@@ -372,20 +372,16 @@ class UsuariosHotspot extends Controller {
 
             if($this->connected){
                 
-                $this->API->write("/ip/hotspot/user/remove",false);
-
-                $this->API->write("=.id=".$id,true);
-
+                $this->API->write('/ip/hotspot/user/remove',false);
+                $this->API->write('=.id='.$id,true);
                 $this->API->read();
 
                 $respuesta = array ('ok' => true, 'mensaje' => 'Se ha borrado exitosamente al usuario');
 
             }else {
-
                 $respuesta = array ('ok' => false, 'mensaje' => 'No se ha podido borrar los datos del usuario');
 
             }
-
             echo json_encode($respuesta);
         }        
     }
@@ -398,20 +394,16 @@ class UsuariosHotspot extends Controller {
 
             if($this->connected){
 
-                $this->API->write("/ip/hotspot/user/remove",false);	
-
-                $this->API->write("=.id=".$id,true);
-
+                $this->API->write('/ip/hotspot/user/reset-counters',false);	
+                $this->API->write('=.id='.$id,true);
                 $this->API->read();
 
                 $respuesta = array ('ok' => true, 'mensaje' => 'Se ha reseteado el contador del usuario');
 
             } else {
-
                 $respuesta = array ('ok' => false, 'mensaje' => 'No se ha podido resetear el contador del usuario');
 
             }
-
             echo json_encode($respuesta);
         }        
     }

@@ -1,5 +1,5 @@
 <?php 
-                    //datos de conexion router
+                    //datos para el ticket
                     define("ENCABEZADO", "ENCABEZADO DEL TICKET XD");
-                    define("PIE", "Mas tickets en el negocio");
+                    define("PIE", "pie de pagina del ticket");
                 

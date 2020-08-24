@@ -21,7 +21,7 @@
 
         </div>
         <script src="<?php echo URLROOT; ?>/js/jquery.min.js"></script>
-        <script src="<?php echo URLROOT; ?>/js/usuariosHotspot/verVouchers.js"></script> <!-- Contiene el script para aplicar datatables -->    
+        <script src="<?php echo URLROOT; ?>/js/usuariosHotspot/verVouchers.js"></script> <!-- Contiene el script para pintar los tickets -->    
     </body>
 </html>
 <p class="noprint" style="font-size: 10px">

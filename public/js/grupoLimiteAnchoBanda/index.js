@@ -1,4 +1,4 @@
-const token = document.getElementById("tokenCSRF").value; //obtengo el token, que está en campo oculto del modal showUserHotspot
+const token = document.getElementById("tokenCSRF").value; //obtengo el token, que está en campo oculto del modal hotspotUserProfile
 
 // para validar campos acepten solo numeros enteros
 $(function(){
@@ -28,6 +28,7 @@ let tablaUsers = $('#tablaUsersProfile').DataTable({
     "zeroRecords": "Sin resultados encontrados"
     },
 });
+
 function showHotspotsUserProfile(id) {
 
     $.ajax({
@@ -117,9 +118,9 @@ function updateHotspotUserProfile() {
 
 }
 
-function deleteHotspotsUserProfile(id, username) {
+function deleteHotspotsUserProfile(id, name) {
     Swal.fire({
-        title: `¿Estás seguro de eliminar a ${username}?`,
+        title: `¿Estás seguro de eliminar a ${name}?`,
         text: "¡No podrás revertir esto!",
         type: 'warning',
         showCancelButton: true,
@@ -140,7 +141,7 @@ function deleteHotspotsUserProfile(id, username) {
                 success: function(respuesta) { //respuesta es un json
                     ok = respuesta.ok;
                     if(ok){
-                        mensaje = respuesta.mensaje+': '+username;
+                        mensaje = respuesta.mensaje+': '+name;
                         showMessageNotify(mensaje, 'success', 2000); //muestro alerta
                         setTimeout(() => {
                             location.reload();

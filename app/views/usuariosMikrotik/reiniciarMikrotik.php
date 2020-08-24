@@ -22,12 +22,10 @@
                             </div>
                             <div class="card-body ">
                                 <div class="row">
-                                <input type="hidden" class="form-control " id="tokenCSRF" value="<?php echo $_SESSION["tokencsrf"]; ?>">
-                                <input type="hidden" class="form-control " id="mikrotik" value="<?php echo $_SESSION['usuario']; ?>">
-                                <input type="hidden" class="form-control " id="urlRoot" value="<?php echo URLROOT; ?>">
-
-                                    
-                                    <button class="btn btn-danger mt-5 btn-block" onclick="reboot()"> <i class="fas fa-power-off"></i> Reiniciar YA</button>
+                                    <input type="hidden" class="form-control " id="tokenCSRF" value="<?php echo $_SESSION["tokencsrf"]; ?>">
+                                    <input type="hidden" class="form-control " id="mikrotik" value="<?php echo $_SESSION['usuario']; ?>">
+                                    <input type="hidden" class="form-control " id="urlRoot" value="<?php echo URLROOT; ?>">
+                                    <button class="btn btn-danger mt-5 btn-block" onclick="reboot()"> <i class="fas fa-power-off"></i> Reiniciar</button>
                                 </div>
                             </div>
                             </div>
