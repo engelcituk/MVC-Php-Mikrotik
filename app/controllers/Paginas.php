@@ -15,7 +15,16 @@ class Paginas extends Controller {
             redirect('dashboard');
         }
 
-        $this->view('paginas/login');
+        $data = [
+            'ip'=> '',
+            'username' => '',
+            'password' => '',
+            'ip_err' => '',
+            'username_err' => '',
+            'messageApi'=>''
+        ];
+        // Cargar vista
+        $this->view('paginas/login', $data);
     }
 
     public function login(){

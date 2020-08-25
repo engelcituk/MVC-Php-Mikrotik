@@ -1,5 +1,6 @@
 <?php
-
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 /**
  * clase principal de la aplicación
  * Crea URL y cargar del controllador nucleo
